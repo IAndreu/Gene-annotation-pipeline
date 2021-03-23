@@ -1,0 +1,224 @@
+<listResult>
+<name><className>java.lang.String</className></name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>LIST</name></datatype><export><className>java.lang.Boolean</className>false</export><list><className>[Lde.jstacs.results.ResultSet;</className><length>1</length><pos val="0"><className>de.jstacs.results.ResultSet</className><resultSet>
+<resStrings><className>[Lde.jstacs.results.Result;</className><length>1</length><pos val="0"><className>de.jstacs.results.TextResult</className><TextResult>
+<name><className>java.lang.String</className>predicted annotation</name><comment><className>java.lang.String</className>Result</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>gff</mime><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/predicted_annotation.gff</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><producer><className>java.lang.String</className>GeneModelMapper</producer><export><className>java.lang.Boolean</className>true</export><extype>null</extype><isTempFile><className>java.lang.Boolean</className>false</isTempFile></TextResult>
+</pos></resStrings></resultSet>
+</pos></list><toolParameters><className>de.jstacs.tools.ToolParameterSet</className><ToolParameterSet>
+<toolName><className>java.lang.String</className>GeMoMa</toolName><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>30</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>search results</name><comment><className>java.lang.String</className>The search results, e.g., from tblastn or mmseqs</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>tabular</mime><checkMimeType><className>java.lang.Boolean</className>false</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/tblastn.txt</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>target genome</name><comment><className>java.lang.String</className>The target genome file (FASTA), i.e., the target sequences in the blast run. Should be in IUPAC code</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>fasta,fas,fa,fna,fasta.gz,fas.gz,fa.gz,fna.gz</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/target-fragment.fasta</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>cds parts</name><comment><className>java.lang.String</className>The query cds parts file (FASTA), i.e., the cds parts that have been blasted</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>fasta,fa,fas,fna</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/cds-parts.fasta</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>assignment</name><comment><className>java.lang.String</className>The assignment file, which combines parts of the CDS to transcripts</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>tabular</mime><checkMimeType><className>java.lang.Boolean</className>false</checkMimeType><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/assignment.tabular</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>introns</name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.ExpandableParameterSet</className><expandableParameterSet>
+<superParameters>
+<parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>introns no. 1</name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>introns</name><comment><className>java.lang.String</className>Introns (GFF), which might be obtained from RNA-seq</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>gff,gff3</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/denoised_introns.gff</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter></set>
+</parameterSet>
+</superParameters>
+<template><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>introns</name><comment><className>java.lang.String</className>Introns (GFF), which might be obtained from RNA-seq</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>gff,gff3</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</template><nameTemplate><className>java.lang.String</className>introns</nameTemplate><commentTemplate><className>java.lang.String</className></commentTemplate><initCount><className>java.lang.Integer</className>0</initCount><minCount><className>java.lang.Integer</className>0</minCount><maxCount><className>java.lang.Integer</className>2147483647</maxCount></expandableParameterSet>
+</parameters></parameterSetContainer>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>reads</name><comment><className>java.lang.String</className>if introns are given by a GFF, only use those which have at least this number of supporting split reads</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Integer</className><lowerBound><className>java.lang.String</className>1</lowerBound><upperBound><className>java.lang.String</className>2147483647</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Integer</className>1</defaultValue><value><className>java.lang.Integer</className>1</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>splice</name><comment><className>java.lang.String</className>if no intron is given by RNA-seq, compute candidate splice sites or not</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>coverage</name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.ExpandableParameterSet</className><expandableParameterSet>
+<superParameters>
+<parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>coverage no. 1</name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.SelectionParameter</className><collectionParameter>
+<name><className>java.lang.String</className>coverage</name><comment><className>java.lang.String</className>experimental coverage (RNA-seq)</comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><required><className>java.lang.Boolean</className>true</required><userSelected><className>java.lang.Boolean</className>true</userSelected><errorMessage>null</errorMessage><collection><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>2</numberOfParameters><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>UNSTRANDED</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>coverage_unstranded</name><comment><className>java.lang.String</className>The coverage file contains the unstranded coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out.</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/coverage.bedgraph</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>STRANDED</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>2</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>coverage_forward</name><comment><className>java.lang.String</className>The coverage file contains the forward coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out.</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>coverage_reverse</name><comment><className>java.lang.String</className>The coverage file contains the reverse coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out.</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter></set>
+</parameterSet>
+</collection><selected><className>java.lang.Integer</className>0</selected><defaultSelected><className>java.lang.Integer</className>0</defaultSelected></collectionParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter></set>
+</parameterSet>
+</superParameters>
+<template><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.SelectionParameter</className><collectionParameter>
+<name><className>java.lang.String</className>coverage</name><comment><className>java.lang.String</className>experimental coverage (RNA-seq)</comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><required><className>java.lang.Boolean</className>true</required><userSelected><className>java.lang.Boolean</className>false</userSelected><errorMessage>null</errorMessage><collection><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>2</numberOfParameters><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>UNSTRANDED</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>coverage_unstranded</name><comment><className>java.lang.String</className>The coverage file contains the unstranded coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out.</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>STRANDED</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>2</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>coverage_forward</name><comment><className>java.lang.String</className>The coverage file contains the forward coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out.</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>coverage_reverse</name><comment><className>java.lang.String</className>The coverage file contains the reverse coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out.</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter></set>
+</parameterSet>
+</collection><selected><className>java.lang.Integer</className>0</selected><defaultSelected><className>java.lang.Integer</className>0</defaultSelected></collectionParameter>
+</parameter></set>
+</parameterSet>
+</template><nameTemplate><className>java.lang.String</className>coverage</nameTemplate><commentTemplate><className>java.lang.String</className></commentTemplate><initCount><className>java.lang.Integer</className>0</initCount><minCount><className>java.lang.Integer</className>0</minCount><maxCount><className>java.lang.Integer</className>2147483647</maxCount></expandableParameterSet>
+</parameters></parameterSetContainer>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>genetic code</name><comment><className>java.lang.String</className>optional user-specified genetic code</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>tabular</mime><checkMimeType><className>java.lang.Boolean</className>false</checkMimeType><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>substitution matrix</name><comment><className>java.lang.String</className>optional user-specified substitution matrix</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>tabular</mime><checkMimeType><className>java.lang.Boolean</className>false</checkMimeType><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>gap opening</name><comment><className>java.lang.String</className>The gap opening cost in the alignment</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Integer</className>11</defaultValue><value><className>java.lang.Integer</className>11</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>gap extension</name><comment><className>java.lang.String</className>The gap extension cost in the alignment</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Integer</className>1</defaultValue><value><className>java.lang.Integer</className>1</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>maximum intron length</name><comment><className>java.lang.String</className>The maximum length of an intron</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Integer</className>15000</defaultValue><value><className>java.lang.Integer</className>15000</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>static intron length</name><comment><className>java.lang.String</className>A flag which allows to switch between static intron length, which can be specified by the user and is identical for all genes, and dynamic intron length, which is based on the gene-specific maximum intron length in the reference organism plus the user given maximum intron length</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>intron-loss-gain-penalty</name><comment><className>java.lang.String</className>The penalty used for intron loss and gain</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Integer</className>25</defaultValue><value><className>java.lang.Integer</className>25</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>e-value</name><comment><className>java.lang.String</className>The e-value for filtering blast results</comment><datatype><className>de.jstacs.DataType</className><name>DOUBLE</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Double</className>100.0</defaultValue><value><className>java.lang.Double</className>100.0</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>contig threshold</name><comment><className>java.lang.String</className>The threshold for evaluating contigs</comment><datatype><className>de.jstacs.DataType</className><name>DOUBLE</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Double</className><lowerBound><className>java.lang.String</className>0.0</lowerBound><upperBound><className>java.lang.String</className>1.0</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Double</className>0.4</defaultValue><value><className>java.lang.Double</className>0.4</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>region threshold</name><comment><className>java.lang.String</className>The threshold for evaluating regions</comment><datatype><className>de.jstacs.DataType</className><name>DOUBLE</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Double</className><lowerBound><className>java.lang.String</className>0.0</lowerBound><upperBound><className>java.lang.String</className>1.0</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Double</className>0.9</defaultValue><value><className>java.lang.Double</className>0.9</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>hit threshold</name><comment><className>java.lang.String</className>The threshold for adding additional hits</comment><datatype><className>de.jstacs.DataType</className><name>DOUBLE</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Double</className><lowerBound><className>java.lang.String</className>0.0</lowerBound><upperBound><className>java.lang.String</className>1.0</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Double</className>0.9</defaultValue><value><className>java.lang.Double</className>0.9</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>predictions</name><comment><className>java.lang.String</className>The (maximal) number of predictions per transcript</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Integer</className>10</defaultValue><value><className>java.lang.Integer</className>10</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>selected</name><comment><className>java.lang.String</className>The path to list file, which allows to make only a predictions for the contained transcript ids. The first column should contain transcript IDs as given in the annotation. Remaining columns can be used to determine a target region that should be overlapped by the prediction, if columns 2 to 5 contain chromosome, strand, start and end of region</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>tabular,txt</mime><checkMimeType><className>java.lang.Boolean</className>false</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>avoid stop</name><comment><className>java.lang.String</className>A flag which allows to avoid (additional) pre-mature stop codons in a transcript</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>approx</name><comment><className>java.lang.String</className>whether an approximation is used to compute the score for intron gain</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>protein alignment</name><comment><className>java.lang.String</className>whether a protein alignment between the prediction and the reference transcript should be computed. If so two additional attributes (iAA, pAA) will be added to predictions in the gff output. These might be used in GAF. However, since some transcripts are very long this can increase the needed runtime and memory (RAM).</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>prefix</name><comment><className>java.lang.String</className>A prefix to be used for naming the predictions</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.String</className></defaultValue><value><className>java.lang.String</className></value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>tag</name><comment><className>java.lang.String</className>A user-specified tag for transcript predictions in the third column of the returned gff. It might be beneficial to set this to a specific value for some genome browsers.</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.String</className>mRNA</defaultValue><value><className>java.lang.String</className>mRNA</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>verbose</name><comment><className>java.lang.String</className>A flag which allows to output a wealth of additional information per transcript</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>false</defaultValue><value><className>java.lang.Boolean</className>false</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>timeout</name><comment><className>java.lang.String</className>The (maximal) number of seconds to be used for the predictions of one transcript, if exceeded GeMoMa does not output a prediction for this transcript.</comment><datatype><className>de.jstacs.DataType</className><name>LONG</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Long</className><lowerBound><className>java.lang.String</className>0</lowerBound><upperBound><className>java.lang.String</className>604800</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Long</className>3600</defaultValue><value><className>java.lang.Long</className>3600</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>sort</name><comment><className>java.lang.String</className>A flag which allows to sort the search results</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>false</defaultValue><value><className>java.lang.Boolean</className>false</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.EnumParameter</className><collectionParameter>
+<name><className>java.lang.String</className>Score</name><comment><className>java.lang.String</className>A flag which allows to do nothing, re-score or re-align the search results</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>true</required><userSelected><className>java.lang.Boolean</className>false</userSelected><errorMessage>null</errorMessage><collection><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>3</numberOfParameters><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>Trust</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>Trust</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>ReScore</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>ReScore</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>ReAlign</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>ReAlign</value></simpleParameter>
+</parameter></set>
+</parameterSet>
+</collection><selected><className>java.lang.Integer</className>0</selected><defaultSelected><className>java.lang.Integer</className>0</defaultSelected><selectedEnum><className>java.lang.String</className>Trust</selectedEnum><defaultSelectedEnum><className>java.lang.String</className>Trust</defaultSelectedEnum><enumName><className>java.lang.Class</className><name>projects.gemoma.GeMoMa$Score</name></enumName></collectionParameter>
+</parameter></set>
+</parameterSet>
+</ToolParameterSet>
+</toolParameters><toolName><className>java.lang.String</className>GeneModelMapper</toolName><date><className>java.lang.Long</className>1599481973045</date></listResult>

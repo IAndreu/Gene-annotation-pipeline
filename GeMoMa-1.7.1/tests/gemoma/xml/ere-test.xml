@@ -1,0 +1,84 @@
+<listResult>
+<name><className>java.lang.String</className></name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>LIST</name></datatype><export><className>java.lang.Boolean</className>false</export><list><className>[Lde.jstacs.results.ResultSet;</className><length>1</length><pos val="0"><className>de.jstacs.results.ResultSet</className><resultSet>
+<resStrings><className>[Lde.jstacs.results.Result;</className><length>2</length><pos val="0"><className>de.jstacs.results.TextResult</className><TextResult>
+<name><className>java.lang.String</className>introns</name><comment><className>java.lang.String</className>Result</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>gff</mime><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/introns.gff</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><producer><className>java.lang.String</className>Extract RNA-seq Evidence</producer><export><className>java.lang.Boolean</className>true</export><extype>null</extype><isTempFile><className>java.lang.Boolean</className>false</isTempFile></TextResult>
+</pos><pos val="1"><className>de.jstacs.results.TextResult</className><TextResult>
+<name><className>java.lang.String</className>coverage</name><comment><className>java.lang.String</className>Result</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bedgraph</mime><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/intermediate/coverage.bedgraph</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><producer><className>java.lang.String</className>Extract RNA-seq Evidence</producer><export><className>java.lang.Boolean</className>true</export><extype>null</extype><isTempFile><className>java.lang.Boolean</className>false</isTempFile></TextResult>
+</pos></resStrings></resultSet>
+</pos></list><toolParameters><className>de.jstacs.tools.ToolParameterSet</className><ToolParameterSet>
+<toolName><className>java.lang.String</className>ERE</toolName><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>7</numberOfParameters><parameter><className>de.jstacs.parameters.EnumParameter</className><collectionParameter>
+<name><className>java.lang.String</className>Stranded</name><comment><className>java.lang.String</className>Defines whether the reads are stranded. In case of FR_FIRST_STRAND, the first read of a read pair or the only read in case of single-end data is assumed to be located on forward strand of the cDNA, i.e., reverse to the mRNA orientation. If you are using Illumina TruSeq you should use FR_FIRST_STRAND.</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>true</required><userSelected><className>java.lang.Boolean</className>false</userSelected><errorMessage>null</errorMessage><collection><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>3</numberOfParameters><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>FR_UNSTRANDED</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>FR_UNSTRANDED</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>FR_FIRST_STRAND</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>FR_FIRST_STRAND</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>FR_SECOND_STRAND</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>FR_SECOND_STRAND</value></simpleParameter>
+</parameter></set>
+</parameterSet>
+</collection><selected><className>java.lang.Integer</className>0</selected><defaultSelected><className>java.lang.Integer</className>0</defaultSelected><selectedEnum><className>java.lang.String</className>FR_UNSTRANDED</selectedEnum><defaultSelectedEnum><className>java.lang.String</className>FR_UNSTRANDED</defaultSelectedEnum><enumName><className>java.lang.Class</className><name>projects.gemoma.ExtractRNAseqEvidence$Stranded</name></enumName></collectionParameter>
+</parameter><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>mapped reads</name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.ExpandableParameterSet</className><expandableParameterSet>
+<superParameters>
+<parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.ParameterSetContainer</className><parameterSetContainer>
+<name><className>java.lang.String</className>mapped reads no. 1</name><comment><className>java.lang.String</className></comment><datatype><className>de.jstacs.DataType</className><name>PARAMETERSET</name></datatype><parameters><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>mapped reads file</name><comment><className>java.lang.String</className>BAM/SAM files containing the mapped reads</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bam,sam</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage>null</errorMessage><value><className>de.jstacs.parameters.FileParameter$FileRepresentation</className><fileRepresentation>
+<filename><className>java.lang.String</className>tests/gemoma/target-accepted_hits.bam</filename><compressed><className>java.lang.Boolean</className>false</compressed></fileRepresentation>
+</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</parameters></parameterSetContainer>
+</parameter></set>
+</parameterSet>
+</superParameters>
+<template><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>1</numberOfParameters><parameter><className>de.jstacs.parameters.FileParameter</className><fileParameter>
+<name><className>java.lang.String</className>mapped reads file</name><comment><className>java.lang.String</className>BAM/SAM files containing the mapped reads</comment><datatype><className>de.jstacs.DataType</className><name>FILE</name></datatype><mime><className>java.lang.String</className>bam,sam</mime><checkMimeType><className>java.lang.Boolean</className>true</checkMimeType><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><value>null</value><validator><className>de.jstacs.parameters.validation.FileExistsValidator</className><FileExistsValidator>
+<errorMsg>null</errorMsg></FileExistsValidator>
+</validator></fileParameter>
+</parameter></set>
+</parameterSet>
+</template><nameTemplate><className>java.lang.String</className>mapped reads</nameTemplate><commentTemplate><className>java.lang.String</className></commentTemplate><initCount><className>java.lang.Integer</className>1</initCount><minCount><className>java.lang.Integer</className>1</minCount><maxCount><className>java.lang.Integer</className>2147483647</maxCount></expandableParameterSet>
+</parameters></parameterSetContainer>
+</parameter><parameter><className>de.jstacs.parameters.EnumParameter</className><collectionParameter>
+<name><className>java.lang.String</className>ValidationStringency</name><comment><className>java.lang.String</className>Defines how strict to be when reading a SAM or BAM, beyond bare minimum validation.</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>true</required><userSelected><className>java.lang.Boolean</className>false</userSelected><errorMessage>null</errorMessage><collection><className>de.jstacs.parameters.SimpleParameterSet</className><parameterSet>
+<set>
+<numberOfParameters><className>java.lang.Integer</className>3</numberOfParameters><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>STRICT</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>STRICT</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>LENIENT</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>LENIENT</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>SILENT</name><comment>null</comment><datatype><className>de.jstacs.DataType</className><name>STRING</name></datatype><required><className>java.lang.Boolean</className>false</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue>null</defaultValue><value><className>java.lang.String</className>SILENT</value></simpleParameter>
+</parameter></set>
+</parameterSet>
+</collection><selected><className>java.lang.Integer</className>1</selected><defaultSelected><className>java.lang.Integer</className>1</defaultSelected><selectedEnum><className>java.lang.String</className>LENIENT</selectedEnum><defaultSelectedEnum><className>java.lang.String</className>LENIENT</defaultSelectedEnum><enumName><className>java.lang.Class</className><name>htsjdk.samtools.ValidationStringency</name></enumName></collectionParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>use secondary alignments</name><comment><className>java.lang.String</className>allows to filter flags in the SAM or BAM</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>coverage</name><comment><className>java.lang.String</className>allows to output the coverage</comment><datatype><className>de.jstacs.DataType</className><name>BOOLEAN</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>true</isSet><errorMessage><className>java.lang.String</className></errorMessage><validator>null</validator><defaultValue><className>java.lang.Boolean</className>true</defaultValue><value><className>java.lang.Boolean</className>true</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>minimum mapping quality</name><comment><className>java.lang.String</className>reads with a mapping quality that is lower than this value will be ignored</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Integer</className><lowerBound><className>java.lang.String</className>0</lowerBound><upperBound><className>java.lang.String</className>255</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Integer</className>40</defaultValue><value><className>java.lang.Integer</className>40</value></simpleParameter>
+</parameter><parameter><className>de.jstacs.parameters.SimpleParameter</className><simpleParameter>
+<name><className>java.lang.String</className>minimum context</name><comment><className>java.lang.String</className>only introns that have evidence of at least one split read with a minimal M (=(mis)match) stretch in the cigar string larger than or equal to this value will be used</comment><datatype><className>de.jstacs.DataType</className><name>INT</name></datatype><required><className>java.lang.Boolean</className>true</required><isSet><className>java.lang.Boolean</className>false</isSet><errorMessage>null</errorMessage><validator><className>de.jstacs.parameters.validation.NumberValidator</className><NumberValidator>
+<className><className>java.lang.String</className>java.lang.Integer</className><lowerBound><className>java.lang.String</className>1</lowerBound><upperBound><className>java.lang.String</className>1000000</upperBound></NumberValidator>
+</validator><defaultValue><className>java.lang.Integer</className>1</defaultValue><value><className>java.lang.Integer</className>1</value></simpleParameter>
+</parameter></set>
+</parameterSet>
+</ToolParameterSet>
+</toolParameters><toolName><className>java.lang.String</className>Extract RNA-seq Evidence</toolName><date><className>java.lang.Long</className>1599481972945</date></listResult>
