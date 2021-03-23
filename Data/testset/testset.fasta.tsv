@@ -1,0 +1,81 @@
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Gene3D	G3DSA:3.20.20.80	Glycosidases	312	396	7.0E-9	T	02-03-2021
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	SMART	SM00708	phbp	30	127	2.9E-15	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	CDD	cd11329	AmyAc_maltase-like	240	738	0.0	T	02-03-2021
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Gene3D	G3DSA:1.10.238.20	-	20	132	6.2E-24	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	PANTHER	PTHR10357:SF177	FI17312P1-RELATED	322	647	2.9E-76	T	02-03-2021
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	SMART	SM00642	aamy	317	667	2.2E-18	T	02-03-2021	IPR006047	Glycosyl hydrolase, family 13, catalytic domain	GO:0003824|GO:0005975
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	PANTHER	PTHR10357	ALPHA-AMYLASE FAMILY MEMBER	322	647	2.9E-76	T	02-03-2021
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Coils	Coil	Coil	160	180	-	T	02-03-2021
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Pfam	PF00128	Alpha amylase, catalytic domain	338	581	6.8E-42	T	02-03-2021	IPR006047	Glycosyl hydrolase, family 13, catalytic domain	GO:0003824|GO:0005975
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	SUPERFAMILY	SSF51445	(Trans)glycosidases	220	650	1.01E-53	T	02-03-2021	IPR017853	Glycoside hydrolase superfamily	
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Pfam	PF16028	Solute carrier family 3 member 2 N-terminus	235	310	7.6E-34	T	02-03-2021	IPR031984	Solute carrier family 3 member 2, N-terminal domain	
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Gene3D	G3DSA:3.90.400.10	-	397	464	7.4E-27	T	02-03-2021
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	20	130	1.02E-21	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Pfam	PF01395	PBP/GOBP family	20	126	1.8E-19	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+quimerafinal	365788653484898ebf3fc9ffb92410e5	769	Gene3D	G3DSA:3.20.20.80	Glycosidases	465	649	1.6E-14	T	02-03-2021
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	SMART	SM00708	phbp	281	378	2.9E-15	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	Pfam	PF01395	PBP/GOBP family	271	377	5.8E-20	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	PANTHER	PTHR13050:SF7	VESICLE TRANSPORT PROTEIN USE1	4	248	6.1E-35	T	02-03-2021
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	PANTHER	PTHR13050	USE1-LIKE PROTEIN	4	248	6.1E-35	T	02-03-2021	IPR019150	Vesicle transport protein, Use1	
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	Pfam	PF09753	Membrane fusion protein Use1	6	246	1.9E-80	T	02-03-2021	IPR019150	Vesicle transport protein, Use1	
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	Gene3D	G3DSA:1.10.238.20	-	271	382	2.3E-24	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	271	381	3.27E-22	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+quimerainicio	1057ee33443a2c059d8eb09b8b377466	384	CDD	cd15860	SNARE_USE1	157	216	1.30882E-16	T	02-03-2021
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	Gene3D	G3DSA:1.10.238.20	-	21	149	1.0E-23	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	MobiDBLite	mobidb-lite	consensus disorder prediction	152	187	-	T	02-03-2021
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	65	163	2.88E-16	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	Coils	Coil	Coil	144	184	-	T	02-03-2021
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	Pfam	PF01395	PBP/GOBP family	28	145	1.9E-11	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	PRINTS	PR02007	Pheromone-binding protein Gp-9 signature	2	21	1.8E-8	T	02-03-2021	IPR022354	Pheromone-binding protein Gp-9	GO:0005615|GO:0035176
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	PRINTS	PR02007	Pheromone-binding protein Gp-9 signature	72	93	1.8E-8	T	02-03-2021	IPR022354	Pheromone-binding protein Gp-9	GO:0005615|GO:0035176
+obp2buena	925b4ca670eeda7d5eb1274908ed5d12	187	PRINTS	PR02007	Pheromone-binding protein Gp-9 signature	119	135	1.8E-8	T	02-03-2021	IPR022354	Pheromone-binding protein Gp-9	GO:0005615|GO:0035176
+obpparcialend	fc6deec26964f2628cabde9758545bb0	75	Gene3D	G3DSA:1.10.238.20	-	1	75	3.4E-16	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obpparcialend	fc6deec26964f2628cabde9758545bb0	75	Pfam	PF01395	PBP/GOBP family	1	71	1.5E-12	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obpparcialend	fc6deec26964f2628cabde9758545bb0	75	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	1	73	4.06E-14	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Gene3D	G3DSA:1.10.238.20	-	407	535	1.1E-22	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Gene3D	G3DSA:1.10.238.20	-	213	341	1.2E-22	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Gene3D	G3DSA:1.10.238.20	-	21	149	1.2E-22	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Pfam	PF01395	PBP/GOBP family	417	531	2.7E-10	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Pfam	PF01395	PBP/GOBP family	223	337	2.7E-10	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Pfam	PF01395	PBP/GOBP family	31	145	2.7E-10	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	SMART	SM00708	phbp	227	339	0.62	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	SMART	SM00708	phbp	35	147	0.62	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	SMART	SM00708	phbp	421	533	0.62	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	MobiDBLite	mobidb-lite	consensus disorder prediction	538	573	-	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Coils	Coil	Coil	336	376	-	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	259	355	3.79E-15	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PANTHER	PTHR11857	ODORANT BINDING PROTEIN-RELATED	1	150	3.1E-25	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PANTHER	PTHR11857	ODORANT BINDING PROTEIN-RELATED	193	342	3.1E-25	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PANTHER	PTHR11857:SF43	GEO07581P1-RELATED	1	150	3.1E-25	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PANTHER	PTHR11857:SF43	GEO07581P1-RELATED	193	342	3.1E-25	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	68	163	4.06E-15	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Coils	Coil	Coil	144	184	-	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	Coils	Coil	Coil	530	570	-	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PRINTS	PR02007	Pheromone-binding protein Gp-9 signature	119	135	2.9E-7	T	02-03-2021	IPR022354	Pheromone-binding protein Gp-9	GO:0005615|GO:0035176
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PRINTS	PR02007	Pheromone-binding protein Gp-9 signature	72	93	2.9E-7	T	02-03-2021	IPR022354	Pheromone-binding protein Gp-9	GO:0005615|GO:0035176
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PRINTS	PR02007	Pheromone-binding protein Gp-9 signature	2	21	2.9E-7	T	02-03-2021	IPR022354	Pheromone-binding protein Gp-9	GO:0005615|GO:0035176
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PANTHER	PTHR11857:SF43	GEO07581P1-RELATED	387	536	3.1E-25	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	MobiDBLite	mobidb-lite	consensus disorder prediction	359	378	-	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	MobiDBLite	mobidb-lite	consensus disorder prediction	153	185	-	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	PANTHER	PTHR11857	ODORANT BINDING PROTEIN-RELATED	387	536	3.1E-25	T	02-03-2021
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	454	549	4.06E-15	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obp2triple	7a35a4ee46907c5ae9d747224f57c400	573	MobiDBLite	mobidb-lite	consensus disorder prediction	345	378	-	T	02-03-2021
+obpparcialstart	ce7b370dec6ca1f3eed6422a662c2124	59	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	20	58	4.71E-6	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	PANTHER	PTHR11857	ODORANT BINDING PROTEIN-RELATED	3	128	1.2E-35	T	02-03-2021
+doble	558c44ac55cf29069683da734a2a205b	279	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	20	130	1.7E-22	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	PANTHER	PTHR11857	ODORANT BINDING PROTEIN-RELATED	148	274	1.2E-35	T	02-03-2021
+doble	558c44ac55cf29069683da734a2a205b	279	SMART	SM00708	phbp	176	273	2.9E-15	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	SMART	SM00708	phbp	30	127	2.9E-15	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	166	276	1.7E-22	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	Pfam	PF01395	PBP/GOBP family	20	126	3.0E-20	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	Pfam	PF01395	PBP/GOBP family	166	272	3.0E-20	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	Gene3D	G3DSA:1.10.238.20	-	20	132	1.0E-24	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	Gene3D	G3DSA:1.10.238.20	-	166	277	1.2E-24	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+doble	558c44ac55cf29069683da734a2a205b	279	PANTHER	PTHR11857:SF43	GEO07581P1-RELATED	3	128	1.2E-35	T	02-03-2021
+doble	558c44ac55cf29069683da734a2a205b	279	PANTHER	PTHR11857:SF43	GEO07581P1-RELATED	148	274	1.2E-35	T	02-03-2021
+obpbuena	eea01bc2ec6e0796619e3b0e977e48b7	133	SMART	SM00708	phbp	30	127	2.9E-15	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obpbuena	eea01bc2ec6e0796619e3b0e977e48b7	133	PANTHER	PTHR11857	ODORANT BINDING PROTEIN-RELATED	3	128	2.4E-16	T	02-03-2021
+obpbuena	eea01bc2ec6e0796619e3b0e977e48b7	133	Pfam	PF01395	PBP/GOBP family	20	126	3.9E-21	T	02-03-2021	IPR006170	Pheromone/general odorant binding protein	GO:0005549
+obpbuena	eea01bc2ec6e0796619e3b0e977e48b7	133	Gene3D	G3DSA:1.10.238.20	-	20	131	1.5E-25	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
+obpbuena	eea01bc2ec6e0796619e3b0e977e48b7	133	PANTHER	PTHR11857:SF43	GEO07581P1-RELATED	3	128	2.4E-16	T	02-03-2021
+obpbuena	eea01bc2ec6e0796619e3b0e977e48b7	133	SUPERFAMILY	SSF47565	Insect pheromone/odorant-binding proteins	20	130	2.09E-23	T	02-03-2021	IPR036728	Pheromone/general odorant binding protein superfamily	GO:0005549
