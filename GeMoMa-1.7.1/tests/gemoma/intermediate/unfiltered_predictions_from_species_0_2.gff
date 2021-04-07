@@ -1,6 +1,0 @@
-##gff-version 3
-#SOFTWARE INFO: GeMoMa 1.7.1; SIMPLE PARAMETERS: reads: 1; splice: true; coverage: UNSTRANDED; gap opening: 11; gap extension: 1; maximum intron length: 15000; static intron length: true; intron-loss-gain-penalty: 25; e-value: 100.0; contig threshold: 0.4; region threshold: 0.9; hit threshold: 0.9; predictions: 10; avoid stop: true; approx: true; protein alignment: true; prefix: ; tag: mRNA; verbose: false; timeout: 3600; sort: false; Score: ReAlign
-ST4.03ch12	GeMoMa	mRNA	330	1066	.	-	.	ID=At4G31700.2.TAIR10_R0;ref-gene=At4G31700.TAIR10;aa=188;score=857;ce=3;rce=3;tae=1;tde=1;tie=1;minSplitReads=5496;tpc=1;minCov=3670;avgCov=6454.0567;pAA=0.9418;iAA=0.9259;nps=0;start=M;stop=*
-ST4.03ch12	GeMoMa	CDS	1015	1066	.	-	0	Parent=At4G31700.2.TAIR10_R0;de=true;pc=1;minCov=5101
-ST4.03ch12	GeMoMa	CDS	645	917	.	-	2	Parent=At4G31700.2.TAIR10_R0;ae=true;de=true;pc=1;minCov=3670
-ST4.03ch12	GeMoMa	CDS	330	568	.	-	2	Parent=At4G31700.2.TAIR10_R0;ae=true;pc=1;minCov=5293

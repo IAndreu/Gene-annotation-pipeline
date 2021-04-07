@@ -1,6 +1,0 @@
-##gff-version 3
-#SOFTWARE INFO: ERE 1.7.1; SIMPLE PARAMETERS: Stranded: FR_UNSTRANDED; ValidationStringency: LENIENT; use secondary alignments: true; coverage: true; minimum mapping quality: 40; minimum context: 1
-ST4.03ch12	RNAseq	intron	569	645	7445	.	.	.
-ST4.03ch12	RNAseq	intron	914	1011	12	.	.	.
-ST4.03ch12	RNAseq	intron	918	1015	5496	.	.	.
-ST4.03ch12	RNAseq	intron	1124	1215	1729	.	.	.
