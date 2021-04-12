@@ -1,5 +1,4 @@
-# Bioinformatics project
-## Pipeline for gene family annotation and comparison across hundreds of genomes
+# Pipeline for gene family annotation across hundreds of genomes
 
 
 
