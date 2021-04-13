@@ -115,9 +115,15 @@ It is located in the directory _"Gene-annotation-pipeline/Data/Genomes/GENOME-NA
 For a general overview of the results, a file called **table_results.txt** in the main directory is produced and contains the number of genes identified in the first step, after _BITACORA_, and the expected, per family and genome.
 
 #### 5. Example
-An example to run the pipeline can be found in Example folder. First, unzip the Example_files.zip file to obtain the necessary files. In this example, two chemosensory-related gene families in insects: Odorant receptors (ORs), and the CD36-SNMP gene family; will be searched in the chromosome 2R of Drosophila melanogaster. The GFF3 and protein files are modified from original annotations, deleting some gene models, to allow that BITACORA can identify novel not-annotated genes.
+An example to run the pipeline can be found in Example folder. It consists of two chemosensory-related gene families in insects: Odorant receptors (ORs), and the CD36-SNMP gene family; will be searched in the chromosome 2R of Drosophila melanogaster. The GFF3 and protein files are modified from original annotations, deleting some gene models, to allow that BITACORA can identify novel not-annotated genes.
 
-To run the example, edit the script from _BITACORA_ "runBITACORA\_command\_line.sh" to add the paths variables and also edit the "run_pipeline.sh" script to add your path to the pipeline.
+First, unzip the Example_files.zip to obtain the necessary files. Move the fasta databases files from _"DB"_ folder to _"Gene-annotation-pipeline/Data/Gene_families"_. Then, create a folder named "Drosophila\_melanogaster" (the genome name) in the directory _"Gene-annotation-pipeline/Data/Genomes"_. Finally, move the files from _Files"_ folder to "Gene-annotation-pipeline/Data/Genomes/Drosophila\_melanogaster"_.
+
+To run the example, edit the script "runBITACORA\_command\_line.sh" from _BITACORA_ to add the paths variables and also edit the "run_pipeline.sh" script to add your path to the pipeline and the genome name (in this example "Drosophila\_melanogaster"). Then in the command line:
+
+```
+bash run_pipeline.sh
+``` 
 
 #### 6. Citation
 
