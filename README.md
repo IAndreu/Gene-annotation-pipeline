@@ -44,6 +44,8 @@ GEMOMAP=/path/to/GeMoMa.jar  (within runBITACORA.sh script)
 Also, if the TSV output file obtained from InterProScan, of the genome predicted proteins included in the GFF in FASTA format is not provided, then InterProScan must be installed and the script "submit_interpro.sh" executed before running the pipeline.
 - **InterProScan**: Download it from https://interproscan-docs.readthedocs.io/en/latest/UserDocs.html#obtaining-a-copy-of-interproscan
 
+**NOTE:** When running InterProScan with this large files, it is highly recommended to be do it in a computer cluster or workstation given the increase of RAM memory and time required.
+
 ## 2. Installation
 
 The pipeline is distributed as a multiplatform shell script (run\_pipeline.sh) that calls several other Python and Perl scripts, which include all functions responsible for performing all pipeline tasks. _BITACORA_ is already installed inside the pipeline, hence, it does not require any installation or compilation step apart from the ones stated in **Prerequisites**.
