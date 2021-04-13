@@ -5,7 +5,7 @@ import pandas as pd
 
 # Run analysis of the gene family database and retrieve the rare sequences in another file for future analysis. If the sequences in rare are not good, then they have to be removed from the gene family db.
 
-df = pd.read_excel('Data/GAGA_gene_families_final.xlsx') 
+df = pd.read_excel('Data/gene_families.xlsx') 
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
 # Get the gene families fasta database file:
 gene_families_db = ['Data/Gene_families/'+i+'_db.fasta' for i in gene_families]
