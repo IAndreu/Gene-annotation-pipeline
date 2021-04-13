@@ -42,6 +42,7 @@ module load mafft/7.453
 # This is where the work is done
 # Make sure that this script is not bigger than 64kb ~ 150 lines, otherwise put in seperat script and execute from here
 
+###### EDIT VARIABLES ######
 path="/home/projects/ku_00039/people/igngod/Project"
 proteome="${path}/Data/Genomes/Mpha/Mpha_annotation_fixed.renamed.representative.pep"
 genome_directory="${path}/Data/Genomes/Mpha/"
@@ -50,5 +51,6 @@ genome="${path}/Data/Genomes/Mpha/GAGA-0245_Monomorium_pharaonis_chromosome.fast
 run_bitacora="${path}/bitacora-master/runBITACORA_command_line.sh"
 genome_name="Mpha"
 num_threads=4
+############################
 
 python3 Scripts/run_analysis.py $proteome $genome_directory $gff $genome $run_bitacora $genome_name $num_threads
