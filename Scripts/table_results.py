@@ -4,9 +4,10 @@ from os import path
 import sys
 import pandas as pd
 
-# Get family names from 'GAGA_gene_families.xlsx'
-df = pd.read_excel('Data/GAGA_gene_families.xlsx') 
-Genome="Mpha"
+Genome = sys.argv[1]
+
+# Get family names from 'gene_families.xlsx'
+df = pd.read_excel('Data/gene_families.xlsx') 
 # Store Gene families:
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
 average= [str(df['Average number in ant genomes'][i]) for i in range(len(df))]
