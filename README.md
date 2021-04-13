@@ -56,6 +56,23 @@ For a typical good quality genome (~2Gb in size and ~10,000 scaffolds) and a 40G
 
 ## 4. Usage
 #### 4.1 Preparing data
+The input files required to run a full analysis (update the complete path to these files if needed in the master script "run\_pipeline.sh") are the following:
+**In the directory _"Gene-annotation-pipeline/Data/"_**:
+- Excel file called "gene_families.xlsx" that contains all the gene families names to be annotated together with the information requiered by the pipeline about them. Example of the format of this file:
+
+| Function/Classification | Gene family | Blast | InterPro Domain | Pfam domain | Average number of genes |Average protein length | Peptide start length | E-value |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| Chemosensory receptors | OR | Yes | IPR004117 | PF02949 | 300-400 | 400 | 40 | 1,00E-5 |
+| Chemosensory and others | CD36 | Yes | IPR002159 | PF01130 | 9 | 350 | 40 | 1,00E-5 |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+ **NOTE:** Not all the fields from the table have to be filled for a gene family to be annotated. "Function/Classification", "InterPro Domain" and "Pfam domain" can be blank cells (specially if there is no domain information about the gene family). "Blast" cell can also be blank if there is no input fasta database of the gene family to run a *blastp*.
+
+**In the directory _"Gene-annotation-pipeline/Data/Gene_families/"_**:
+- Files containing the query protein databases (GENEFAMILY-NAME\_db.fasta) in FASTA format, where the “GENEFAMILY-NAME” label is your specific data file name. The addition of ”_db” to the database name with its proper extension, fasta or hmm, is mandatory.
+
+
+
+
 
 
 
