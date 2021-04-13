@@ -43,13 +43,13 @@ module load mafft/7.453
 # Make sure that this script is not bigger than 64kb ~ 150 lines, otherwise put in seperat script and execute from here
 
 ###### EDIT VARIABLES ######
-path="/home/projects/ku_00039/people/igngod/Project"
-proteome="${path}/Data/Genomes/Mpha/Mpha_annotation_fixed.renamed.representative.pep"
-genome_directory="${path}/Data/Genomes/Mpha/"
-gff="${path}/Data/Genomes/Mpha/Mpha_annotation_fixed.renamed.gff3"
-genome="${path}/Data/Genomes/Mpha/GAGA-0245_Monomorium_pharaonis_chromosome.fasta"
+path="/path/to/Gene-annotation-pipeline"
+genome_name="Genome-name"
+genome_directory="${path}/Data/Genomes/Genome-name"
+proteome="${genome_directory}/Proteome-in-fasta-file"
+gff="${genome_directory}/gff3-file"
+genome="${genome_directory}/Genome-in-fasta-file"
 run_bitacora="${path}/bitacora-master/runBITACORA_command_line.sh"
-genome_name="Mpha"
 num_threads=4
 ############################
 
