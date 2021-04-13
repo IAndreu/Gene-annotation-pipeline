@@ -2,7 +2,19 @@
 
 This pipeline automates and standardizes gene family annotation for a number of gene families in dataset of newly generated genomes. This pipeline allows to obtain the most accurate number of gene copies and minimizes methodical biases that would otherwise perturb downstream comparative analyses. _BITACORA_ and _GeMoMa_ are the main tools used for the identification and annotation of gene families in genome assemblies, toghether with a first preprocessing step that identifies and curate gene models using _Blastp_ and _InterProScan_ based on an input file with information of the gene families to annotate.
 
-## Prerequisites
+### Contents
+1. Prerequisites
+2. Installation
+3. Computational Requirements
+4. Usage
+    4.1 Preparing data
+    4.2 Run pipeline
+    4.3 Output
+    4.4 Overview of the outputs
+5. Example
+
+
+## 1. Prerequisites
 The requiered dependencies necessary for running the pipeline are:
 - **Perl**: Perl is installed by default in most operating systems. See https://learn.perl.org/installing/ for installation instructions.
 - **Python**: Download the newest version available from https://www.python.org/downloads/
@@ -30,12 +42,20 @@ GEMOMAP=/path/to/GeMoMa.jar  (within runBITACORA.sh script)
 Also, if the TSV output file obtained from InterProScan, of the genome predicted proteins included in the GFF in FASTA format is not provided, then InterProScan must be installed and the script "submit_interpro.sh" executed before running the pipeline.
 - **InterProScan**: Download it from https://interproscan-docs.readthedocs.io/en/latest/UserDocs.html#obtaining-a-copy-of-interproscan
 
-## Installation
+## 2. Installation
 
-The pipeline is distributed as a multiplatform shell script (run_pipeline.sh) that calls several other Python and Perl scripts, which include all functions responsible of performing all pipeline tasks. Hence, it does not require any installation or compilation step.
+The pipeline is distributed as a multiplatform shell script (run\_pipeline.sh) that calls several other Python and Perl scripts, which include all functions responsible for performing all pipeline tasks. _BITACORA_ is already installed inside the pipeline, hence, it does not require any installation or compilation step apart from the ones stated in **Prerequisites**.
 
-To run the pipeline edit the master script "run\_pipeline.sh" variables described in Prerequisites, and also the master script of _BITACORA_ "runBITACORA_command_line.sh" variables.
+To run the pipeline edit the master script "run\_pipeline.sh" variables and also the script of _BITACORA_ "runBITACORA\_command\_line.sh" path variables: BLAST and HMMER (if needed), BITACORA script folder and GeMoMa jar file.
 
+## 3. Computational requirements
+
+The pipeline have been tested in UNIX-based platforms (both in Mac OS and Linux operating systems). Multiple threading can be set in blast searches, which is the most time-consuming step, by editing the variable THREADS in "run\_pipeline.sh".
+
+For a typical good quality genome (~2Gb in size and ~10,000 scaffolds) and a 40Gb RAM machine, it is able to analyze a whole genome and a total of 94 gene and gene families in 10 hours using 4 cores.
+
+## 4. Usage
+#### 4.1 Preparing data
 
 
 
