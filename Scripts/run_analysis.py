@@ -19,7 +19,7 @@ genome_name = sys.argv[6]
 threads = sys.argv[7]
 
 # Get family names from 'GAGA_gene_families.xlsx'
-df = pd.read_excel('Data/GAGA_gene_families.xlsx') 
+df = pd.read_excel('Data/gene_families.xlsx') 
 
 # Store Gene families:
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
@@ -162,3 +162,5 @@ for i in range(len(gene_families)):
     directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
     os.chdir("%s" % (directory))
     os.system("bash %s -q %s -g %s -f %s -p %s -n %s -t %s" % (run_bitacora, directory, genome, gff, proteome, genome_name, threads))
+
+os.system("python3 Scripts/table_results.py %s" % (genome_name))
