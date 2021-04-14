@@ -11,4 +11,4 @@ num_threads=4
 
 ############################
 
-python3 Scripts/run_analysis.py $proteome $genome_directory $gff $genome $run_bitacora $genome_name $num_threads
+python3 Scripts/run_analysis.py $path $proteome $genome_directory $gff $genome $run_bitacora $genome_name $num_threads
