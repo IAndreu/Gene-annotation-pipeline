@@ -10,15 +10,16 @@ import sys
 import pandas as pd
 import numpy as np
 
-proteome = sys.argv[1]
-genome_directory = sys.argv[2]
-gff = sys.argv[3]
-genome = sys.argv[4]
-run_bitacora = sys.argv[5]
-genome_name = sys.argv[6]
-threads = sys.argv[7]
+path = sys.argv[1]
+proteome = sys.argv[2]
+genome_directory = sys.argv[3]
+gff = sys.argv[4]
+genome = sys.argv[5]
+run_bitacora = sys.argv[6]
+genome_name = sys.argv[7]
+threads = sys.argv[8]
 
-# Get family names from 'GAGA_gene_families.xlsx'
+# Get family names from 'gene_families.xlsx'
 df = pd.read_excel('Data/gene_families.xlsx') 
 
 # Store Gene families:
@@ -32,11 +33,11 @@ gene_families_db = ['Data/Gene_families/'+i+'_db.fasta' for i in gene_families]
 # Copy the gene family db in a folder inside the proteome
 for i in range(len(gene_families_db)):
     if blast[i]=='Yes':
-        new = genome_directory+'gene_families_pipeline/'+gene_families[i]
+        new = genome_directory+'/gene_families_pipeline/'+gene_families[i]
         os.system("mkdir -p %s && cp %s %s" % (new, gene_families_db[i], new))
         gene_families_db[i] = new + '/' + gene_families[i]+'_db.fasta'
     else:
-        new = genome_directory+'gene_families_pipeline/'+gene_families[i]
+        new = genome_directory+'/gene_families_pipeline/'+gene_families[i]
         os.system("mkdir -p %s && echo > %s" % (new, new+'/' + gene_families[i] + '_db.fasta'))
         gene_families_db[i] = new + '/' + gene_families[i]+'_db.fasta'
 
@@ -163,4 +164,5 @@ for i in range(len(gene_families)):
     os.chdir("%s" % (directory))
     os.system("bash %s -q %s -g %s -f %s -p %s -n %s -t %s" % (run_bitacora, directory, genome, gff, proteome, genome_name, threads))
 
+os.chdir("%s" % (path))
 os.system("python3 Scripts/table_results.py %s" % (genome_name))
