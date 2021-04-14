@@ -10,7 +10,7 @@ Genome = sys.argv[1]
 df = pd.read_excel('Data/gene_families.xlsx') 
 # Store Gene families:
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
-average= [str(df['Average number in ant genomes'][i]) for i in range(len(df))]
+average= [str(df['Average number of genes'][i]) for i in range(len(df))]
 
 with open("table_results.txt", "w") as fp:
     fp.write("Gene family\tstep 1\tBitacora\ttotal\tAverage number in ant genomes\n")
