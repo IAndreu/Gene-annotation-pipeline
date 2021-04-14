@@ -20,6 +20,7 @@ This pipeline automates and standardizes gene family annotation for a number of 
 The requiered dependencies necessary for running the pipeline are:
 - **Perl**: Perl is installed by default in most operating systems. See https://learn.perl.org/installing/ for installation instructions.
 - **Python**: Download the newest version available from https://www.python.org/downloads/
+- **Biopython**: Download from https://biopython.org/wiki/Download
 - **BLAST**: Download blast executables from: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 - **HMMER**: The easiest way to install HMMER in your system is to type one of the following commands in your terminal:
 ```
