@@ -84,7 +84,7 @@ for i in merged:
         merged[i]['label']="chimera"
     # If the protein length is less than 60% of the gene family proteins average length 
     elif (int(merged[i]["stop"])-int(merged[i]["start"])+2)< (float(prot_avg) * 0.6):
-        merged[i]['label']="parcial"
+        merged[i]['label']="partial"
     else:
         merged[i]['label']="complete"
 
