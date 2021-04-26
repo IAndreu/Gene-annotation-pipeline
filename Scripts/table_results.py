@@ -12,7 +12,7 @@ df = pd.read_excel('Data/gene_families.xlsx')
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
 average= [str(df['Average number of genes'][i]) for i in range(len(df))]
 
-with open("table_results.txt", "w") as fp:
+with open("Data/Genomes/"+Genome+"table_results.txt", "w") as fp:
     fp.write("Gene family\tstep 1\tBitacora\ttotal\tAverage number in ant genomes\n")
     fp.close()
 for i in range(len(gene_families)):
@@ -22,7 +22,7 @@ for i in range(len(gene_families)):
         f=open(result)
         lines=f.readlines()
         gf, step1, bit, tot = lines[1].split()[:4]
-        with open("table_results.txt", "a") as fp:
+        with open("Data/Genomes/"+Genome+"table_results.txt", "a") as fp:
             fp.write(gf+"\t"+step1+"\t"+bit+"\t"+tot+"\t"+average[i]+"\n")
             fp.close()
 
