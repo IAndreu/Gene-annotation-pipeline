@@ -149,6 +149,7 @@ for i in range(len(gene_families)):
     output = directory+"/"+gene_families[i]+'_db.fasta'
     os.system("python3 Scripts/merge_blast_domain.py %s %s %s %s %s %s" % (proteome, blast, inter, prot_avg, pept_avg, output))
 
+# Produce GFF of the step1 results
 for i in range(len(gene_families)):
     merged = gene_families_db[i].replace("_db.fasta","_merged.txt")
     output = gene_families_db[i].replace("_db.fasta","")
