@@ -153,7 +153,7 @@ for i in range(len(gene_families)):
 for i in range(len(gene_families)):
     merged = gene_families_db[i].replace("_db.fasta","_merged.txt")
     output = gene_families_db[i].replace("_db.fasta","")
-    os.system("perl Scripts/get_annot_genes_gff_v2.pl %s %s %s" % (gff, merged, gene_families[i]))
+    os.system("perl Scripts/get_annot_genes_gff_v2.pl %s %s %s" % (gff, merged, output))
     
 # Produce HMM profile of the gene family db (good) + the parsed sequences
 for i in range(len(gene_families)):
