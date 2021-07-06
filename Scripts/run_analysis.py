@@ -149,6 +149,11 @@ for i in range(len(gene_families)):
     output = directory+"/"+gene_families[i]+'_db.fasta'
     os.system("python3 Scripts/merge_blast_domain.py %s %s %s %s %s %s" % (proteome, blast, inter, prot_avg, pept_avg, output))
 
+for i in range(len(gene_families)):
+    merged = gene_families_db[i].replace("_db.fasta","_merged.txt")
+    output = gene_families_db[i].replace("_db.fasta","")
+    os.system("perl Scripts/get_annot_genes_gff_v2.pl %s %s %s" % (gff, merged, gene_families[i]))
+    
 # Produce HMM profile of the gene family db (good) + the parsed sequences
 for i in range(len(gene_families)):
     fasta = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/"+gene_families[i]+"_db.fasta")
