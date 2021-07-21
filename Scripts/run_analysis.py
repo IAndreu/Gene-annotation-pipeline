@@ -53,6 +53,8 @@ pept_avg_len = [float(df['Peptide start length'][i]) for i in range(len(df))]
 # Get e-values for each gene family to run blast
 evalues = [float(df['E-value'][i]) for i in range(len(df))]
 
+# Get if it is necessary to run bitacora for each gene family
+Bitacora= [df['Bitacora'][i] for i in range(len(df))]
 
 # run blast for every gene family if able
 for i in range(len(gene_families)):
@@ -168,12 +170,20 @@ for i in range(len(gene_families)):
     os.system("hmmbuild %s  %s" % (profile, alignment))
     os.system("rm %s" % (alignment))
 
-# Run bitacora
+# Run bitacora if necessary
 for i in range(len(gene_families)):
-    directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
-    os.chdir("%s" % (directory))
-    os.system("bash %s -q %s -g %s -f %s -p %s -n %s -t %s" % (run_bitacora, directory, genome, gff, proteome, genome_name, threads))
-
+    if Bitacora[i]=="Yes":
+        directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
+        os.chdir("%s" % (directory))
+        os.system("bash %s -q %s -g %s -f %s -p %s -n %s -t %s" % (run_bitacora, directory, genome, gff, proteome, genome_name, threads))
+    else:
+        directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
+        os.chdir("%s" % (directory))
+        with open(genome_name+"_genecounts_summary.txt", 'w') as fp:
+            fp.write('Bitacora not runned\n')
+            fp.write(gene_families+"\t"+0+"\t"+0+"\t"+0+"\t"+0+"\t"+0"\n")
+            fp.close()
+        
 os.chdir("%s" % (path))
 os.system("python3 %s %s %s %s" % (path+'/Scripts/table_results.py', genome_name, path+'/Data/gene_families.xlsx', genome_directory))
 
