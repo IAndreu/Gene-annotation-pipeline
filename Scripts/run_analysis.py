@@ -172,10 +172,18 @@ for i in range(len(gene_families)):
 
 # Run bitacora if necessary
 for i in range(len(gene_families)):
-    if Bitacora[i]=="Yes":
+    if Bitacora[i]=="full":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
         os.chdir("%s" % (directory))
-        os.system("bash %s -q %s -g %s -f %s -p %s -n %s -t %s" % (run_bitacora, directory, genome, gff, proteome, genome_name, threads))
+        os.system("bash %s -m %s -q %s -g %s -f %s -p %s -n %s -t %s" % ('full',run_bitacora, directory, genome, gff, proteome, genome_name, threads))
+    if Bitacora[i]=="genome":
+        directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
+        os.chdir("%s" % (directory))
+        os.system("bash %s -m %s -q %s -g %s -n %s -t %s" % ('genome',run_bitacora, directory, genome, genome_name, threads))
+    if Bitacora[i]=="protein":
+        directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
+        os.chdir("%s" % (directory))
+        os.system("bash %s -m %s -q %s -p %s -n %s -t %s" % ('protein',run_bitacora, directory, proteome, genome_name, threads))
     else:
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result/")
         os.chdir("%s" % (directory))
