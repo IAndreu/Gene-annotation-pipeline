@@ -189,7 +189,7 @@ for i in range(len(gene_families)):
         os.chdir("%s" % (directory))
         with open(genome_name+"_genecounts_summary.txt", 'w') as fp:
             fp.write('Bitacora not runned\n')
-            fp.write(gene_families+"\t0\t0\t0\t0\t0\n")
+            fp.write(gene_families[i]+"\t0\t0\t0\t0\t0\n")
             fp.close()
         
 os.chdir("%s" % (path))
