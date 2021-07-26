@@ -186,7 +186,7 @@ for i in range(len(gene_families)):
             fp.close()
         with open(genome_name+"_genecounts_summary.txt", 'w') as fp:
             fp.write('Bitacora runned in "genome" mode\n')
-            fp.write(gene_families[i]+"\t"+vari[1]+"\t+0+\t"+vari[1]+"\t"+vari[2]+"\t"+vari[3]+"\n")
+            fp.write(gene_families[i]+"\t"+vari[1]+"\t0\t"+vari[1]+"\t"+vari[2]+"\t"+vari[3]+"\n")
             fp.close()
     elif Bitacora[i]=="protein":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
@@ -198,7 +198,7 @@ for i in range(len(gene_families)):
             fp.close()
         with open(genome_name+"_genecounts_summary.txt", 'w') as fp:
             fp.write('Bitacora runned in "genome" mode\n')
-            fp.write(gene_families[i]+"\t"+vari[1]+"\t+0+\t"+vari[1]+"\t"+vari[1]+"\t"+vari[4]+"\n")
+            fp.write(gene_families[i]+"\t"+vari[1]+"\t0\t"+vari[1]+"\t"+vari[1]+"\t"+vari[4]+"\n")
             fp.close()
     else:
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
