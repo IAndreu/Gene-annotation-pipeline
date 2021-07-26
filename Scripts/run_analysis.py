@@ -180,10 +180,26 @@ for i in range(len(gene_families)):
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
         os.chdir("%s" % (directory))
         os.system("bash %s -m %s -q %s -g %s -n %s -t %s" % (run_bitacora,'genome' ,directory, genome, genome_name, threads))
+        with open(genome_name+"_genecounts_genomic_proteins.txt", 'r') as fp:
+            lines = fp.read().split('\n')
+            vari = lines[1].split()
+            fp.close()
+        with open(genome_name+"_genecounts_summary.txt", 'w') as fp:
+            fp.write('Bitacora runned in "genome" mode\n')
+            fp.write(gene_families[i]+"\t"+vari[1]+"\t+0+\t"+vari[1]+"\t"+vari[2]+"\t"+vari[3]+"\n")
+            fp.close()
     elif Bitacora[i]=="protein":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
         os.chdir("%s" % (directory))
         os.system("bash %s -m %s -q %s -p %s -n %s -t %s" % (run_bitacora, 'protein', directory, proteome, genome_name, threads))
+        with open(genome_name+"_genecounts_annotated_proteins.txt", 'r') as fp:
+            lines = fp.read().split('\n')
+            vari = lines[1].split()
+            fp.close()
+        with open(genome_name+"_genecounts_summary.txt", 'w') as fp:
+            fp.write('Bitacora runned in "genome" mode\n')
+            fp.write(gene_families[i]+"\t"+vari[1]+"\t+0+\t"+vari[1]+"\t"+vari[1]+"\t"+vari[4]+"\n")
+            fp.close()
     else:
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
         os.chdir("%s" % (directory))
