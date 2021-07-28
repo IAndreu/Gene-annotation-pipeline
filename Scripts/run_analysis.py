@@ -175,11 +175,11 @@ for i in range(len(gene_families)):
     if Bitacora[i]=="full":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
         os.chdir("%s" % (directory))
-        os.system("bash %s -m %s -q %s -g %s -f %s -p %s -n %s -t %s" % (run_bitacora, 'full',directory, genome, gff, proteome, genome_name, threads))
+        os.system("bash %s -m %s -q %s -g %s -f %s -p %s -n %s -t %s -e %s" % (run_bitacora, 'full',directory, genome, gff, proteome, genome_name, threads, evalues[i]))
     elif Bitacora[i]=="genome":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
         os.chdir("%s" % (directory))
-        os.system("bash %s -m %s -q %s -g %s -n %s -t %s" % (run_bitacora,'genome' ,directory, genome, genome_name, threads))
+        os.system("bash %s -m %s -q %s -g %s -n %s -t %s -e %s" % (run_bitacora,'genome' ,directory, genome, genome_name, threads, evalues[i]))
         with open(genome_name+"_genecounts_genomic_proteins.txt", 'r') as fp:
             lines = fp.read().split('\n')
             vari = lines[1].split()
@@ -191,7 +191,7 @@ for i in range(len(gene_families)):
     elif Bitacora[i]=="protein":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
         os.chdir("%s" % (directory))
-        os.system("bash %s -m %s -q %s -p %s -n %s -t %s" % (run_bitacora, 'protein', directory, proteome, genome_name, threads))
+        os.system("bash %s -m %s -q %s -p %s -n %s -t %s -e %s" % (run_bitacora, 'protein', directory, proteome, genome_name, threads, evalues[i]))
         with open(genome_name+"_genecounts_annotated_proteins.txt", 'r') as fp:
             lines = fp.read().split('\n')
             vari = lines[1].split()
