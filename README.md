@@ -148,7 +148,7 @@ For a general overview of the results, a file called **table_results.txt** in th
 After running the pipeline, it's time to check the table_results for each genome and correct the gene families that have a label "Review". For more information about this step contact ignasi.andreu.godall@gmail.com.
 
 The last step is to generate the final output that consists of selecting the desired output files for each gene family that is indicated in the last column of the table_results.txt. To do so, run the script generate_final_oputputs.sh after filling the following arguments:
-
+```
 usage: gen_final_output.py [-h]
                            pipeline_dir genome gene_families_info
                            pipeline_output out_dir
@@ -166,7 +166,7 @@ positional arguments:
 
 optional arguments:
   -h, --help          show this help message and exit
-
+```
 #### 5. Example
 An example to run the pipeline can be found in Example folder. It consists of two chemosensory-related gene families in insects: Odorant receptors (ORs), and the CD36-SNMP gene family; will be searched in the chromosome 2R of Drosophila melanogaster. The GFF3 and protein files are modified from original annotations, deleting some gene models, to allow that BITACORA can identify novel not-annotated genes.
 
