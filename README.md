@@ -60,10 +60,41 @@ The pipeline have been tested in UNIX-based platforms (both in Mac OS and Linux 
 For a typical good quality genome (~2Gb in size and ~10,000 scaffolds) and a 40Gb RAM machine, it is able to analyze a whole genome and a total of 94 gene and gene families in 10 hours using 4 cores.
 
 ## 4. Usage
+
+```
+usage: run_analysis.py [-h]
+                       pipeline_dir gene_families_info gene_families_db
+                       proteome interpro gff genome bitacora name out_dir
+                       threads
+
+Pipeline for gene family re-annotation accross hundreds of genomes.
+
+positional arguments:
+  pipeline_dir        Main directory of the pipeline that contains the
+                      README.md.
+  gene_families_info  Excel file containing all the gene families information.
+  gene_families_db    Directory containing the query protein databases
+                      (GENEFAMILY-NAME_db.fasta), where the “GENEFAMILY-NAME”
+                      label is a gene family name from the Excel file. The
+                      addition of ”_db” to the database name with its proper
+                      extension is mandatory. ej: PATH/TO/DB
+  proteome            File with predicted proteins in FASTA format.
+  interpro            File with predicted domains from InterPro in TSV format.
+  gff                 File with structural annotations in GFF3 format.
+  genome              File with genomic sequences in FASTA format.
+  bitacora            Path to script runBITACORA_command_line.sh.
+  name                Name/ID of the genome ej. GAGA-0001.
+  out_dir             Output directory. ej: PATH/TO/OUT_DIR
+  threads             Number of threads to be used.
+
+optional arguments:
+  -h, --help          show this help message and exit
+```
+
 #### 4.1. Preparing data
 The input files required to run a full analysis (update the complete path to these files if needed in the master script "run\_pipeline.sh") are the following:
-##### In the directory _"Gene-annotation-pipeline/Data/"_
-- **Excel file called "gene_families.xlsx" that contains all the gene families names to be annotated together with the information requiered by the pipeline about them.**
+
+- **gene_families_info: Excel file called "gene_families.xlsx" that contains all the gene families names to be annotated together with the information requiered by the pipeline about them.**
 
 Example of the format of this file:
 
@@ -75,25 +106,15 @@ Example of the format of this file:
 
  **NOTE:** Not all the fields from the table have to be filled for a gene family to be annotated. "Function/Classification", "InterPro Domain" and "Pfam domain" can be blank cells (specially if there is no domain information about the gene family). "Blast" cell can also be blank if there is no input fasta database of the gene family to run a *blastp*.
 
-##### In the directory _"Gene-annotation-pipeline/Data/Gene_families/"_
-- **Files containing the query protein databases (GENEFAMILY-NAME\_db.fasta) in FASTA format, where the “GENEFAMILY-NAME” label is a gene family name from the Excel file. The addition of ”_db” to the database name with its proper extension is mandatory.**
-
-##### In the directory _"Gene-annotation-pipeline/Data/Genomes/"_
-Here is where all the genomes that have to be annotated must be placed in a folder with their name and all the required files inside.  Example:
-
-_.../Genomes/Genome-name1/files_
-
-_.../Genomes/Genome-name2/files_
-
-...
-
-_.../Genomes/Genome-nameN/files_
-
-Where the files for each genome are:
-
+- **gene_families_db: directory containing the query protein databases (GENEFAMILY-NAME\_db.fasta) in FASTA format, where the “GENEFAMILY-NAME” label is a gene family name from the Excel file. The addition of ”_db” to the database name with its proper extension is mandatory.**
+- **out_dir: output directory containing all gene families annotation.**
+- 
 - **File with genomic sequences in FASTA format**
+- 
 - **File with structural annotations in GFF3 format**
+- 
 - **File with predicted proteins in FASTA format.**
+- 
 - **File with predicted domains from InterPro in TSV format**
 
 Those files are some of the variables that must be specified in the main script "run_pipeline.sh".
