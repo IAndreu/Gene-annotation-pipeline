@@ -3,25 +3,52 @@
 #     Run gene annotation pipeline Step 1 + Bitacora      #
 #                                                         #
 ###########################################################
-
-
 import os
 import sys
 import pandas as pd
 import numpy as np
+import argparse
 
-path = sys.argv[1]
-proteome = sys.argv[2]
-interpro = sys.argv[3]
-genome_directory = sys.argv[4]
-gff = sys.argv[5]
-genome = sys.argv[6]
-run_bitacora = sys.argv[7]
-genome_name = sys.argv[8]
-threads = sys.argv[9]
+parser = argparse.ArgumentParser(description='Pipeline for gene family re-annotation accross hundreds of genomes.')
+parser.add_argument('pipeline_dir', type = str,
+                     help = 'Main directory of the pipeline that contains the README.md.')
+parser.add_argument('gene_families_info', type = str,
+                     help = 'Excel file containing all the gene families information.')
+parser.add_argument('gene_families_db', type = str,
+                     help = 'Directory containing the query protein databases (GENEFAMILY-NAME_db.fasta), where the “GENEFAMILY-NAME” label is a gene family name from the Excel file. The addition of ”_db” to the database name with its proper extension is mandatory. ej: PATH/TO/DB')
+parser.add_argument('proteome', type = str,
+                     help = 'File with predicted proteins in FASTA format.')
+parser.add_argument('interpro', type = str,
+                     help = 'File with predicted domains from InterPro in TSV format.')
+parser.add_argument('gff', type = str,
+                     help = 'File with structural annotations in GFF3 format.')
+parser.add_argument('genome', type = str,
+                     help = 'File with genomic sequences in FASTA format.')
+parser.add_argument('bitacora', type = str,
+                     help = 'Path to script runBITACORA_command_line.sh.')
+parser.add_argument('name', type = str,
+                     help = 'Name/ID of the genome ej. GAGA-0001.')
+parser.add_argument('out_dir', type = str,
+                     help = 'Output directory.')
+parser.add_argument("threads", type=int,
+                    help="Number of threads to be used.")
+
+args = parser.parse_args()
+
+path = args.pipeline_dir
+proteome = args.proteome
+interpro = args.interpro
+genome_directory = args.out_dir
+gff = args.gff
+genome = args.genome
+run_bitacora = args.bitacora
+genome_name = args.name
+threads = args.threads
+excel_table = args.gene_families_info
+gf_db = args.gene_families_db
 
 # Get family names from 'gene_families.xlsx'
-df = pd.read_excel(path+'/Data/gene_families.xlsx') 
+df = pd.read_excel(excel_table) 
 
 # Store Gene families:
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
@@ -30,7 +57,7 @@ gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
 blast= [df['Blast'][i] for i in range(len(df))]
 
 # Get the gene families fasta database file:
-gene_families_db = [path+'/Data/Gene_families/'+i+'_db.fasta' for i in gene_families]
+gene_families_db = [gf_db+'/'+i+'_db.fasta' for i in gene_families]
 # Copy the gene family db in a folder inside the proteome
 for i in range(len(gene_families_db)):
     if blast[i]=='Yes':
@@ -52,7 +79,6 @@ pept_avg_len = [float(df['Peptide start length'][i]) for i in range(len(df))]
 
 # Get e-values for each gene family to run blast
 evalues = [float(df['E-value'][i]) for i in range(len(df))]
-
 # Get if it is necessary to run bitacora for each gene family
 Bitacora= [df['Bitacora'][i] for i in range(len(df))]
 
@@ -82,13 +108,46 @@ for i in range(len(gene_families)):
 
 # read InterproScan output
 tsv = pd.read_csv(interpro, sep='\t', header=None, names = list(range(0,14)))
-
-# For each gene family, produce a table with the proteins find in interproscan output if able:
 # Check if there is Pfam domain, if not check if there is InterPro domain. Also, if there are more than one ID then retrieve all of them.
 for i in range(len(InterPro)):
     name= gene_families_db[i].replace("_db.fasta","_parsed_domain.txt")
-    # Check if there is Pfam domain
-    if str(Pfam[i])[0]=='P':
+    # Check if there is Pfam domain and Interpro
+    if str(Pfam[i])[0]=='P' and str(InterPro[i])[0]=='I':
+        # Obtain a table with all the domains
+        l=[]
+        if "&&" not in Pfam[i].split():
+            for j in Pfam[i].split():
+                if j[0]=='P':
+                    l.append(tsv.loc[tsv[4] == j])
+            new_table = pd.concat(l)[[0, 6, 7, 2, 3]]
+        if "&&" in Pfam[i].split():
+            for j in Pfam[i].split():
+                if j[0]=='P':
+                    l.append(tsv.loc[tsv[4] == j].drop_duplicates(subset=[0], keep='first'))
+            new_table = pd.concat(l)
+            new_table = new_table[new_table.duplicated(subset=[0], keep=False)][[0, 6, 7, 2, 3]]
+        
+        ll=[]
+        if "&&" not in InterPro[i].split():
+            for j in InterPro[i].split():
+                if j[0]=='I':
+                    ll.append(tsv.loc[tsv[11] == j])
+            new_table2 = pd.concat(ll)[[0, 6, 7, 2, 3]]
+        if "&&" in InterPro[i].split():
+            for j in InterPro[i].split():
+                if j[0]=='I':
+                    ll.append(tsv.loc[tsv[11] == j].drop_duplicates(subset=[0], keep='first'))
+            new_table2 = pd.concat(ll)
+            new_table2 = new_table2[new_table2.duplicated(subset=[0], keep=False)][[0, 6, 7, 2, 3]]
+        if len(new_table2)!=0 or len(new_table)!=0:
+            pd.concat([new_table,new_table2]).to_csv(path_or_buf= name ,header=None, index=None, sep='\t', mode='a')
+        else:  # if no matches then write a blank file
+            with open(name, 'w') as fp: 
+                fp.write('delete\t1\t10\t10\tPfam\n')
+                fp.write('delete\t1\t10\t10\tPfam\n')
+                fp.close() 
+    # if there is Pfam and no Interpro:
+    elif str(Pfam[i])[0]=='P' and str(InterPro[i])[0]!='I':
         # Obtain a table with all the pfam domains
         l=[]
         if "&&" not in Pfam[i].split():
@@ -109,8 +168,8 @@ for i in range(len(InterPro)):
                 fp.write('delete\t1\t10\t10\tPfam\n')
                 fp.write('delete\t1\t10\t10\tPfam\n')
                 fp.close()       
-    # if there is no Pfam then Interpro:
-    elif str(InterPro[i])[0]=='I':
+    # if there is no Pfam but Interpro:
+    elif str(InterPro[i])[0]=='I' and str(Pfam[i])[0]!='P':
         # Obtain a table with all the domains
         l=[]
         if "&&" not in InterPro[i].split():
@@ -141,6 +200,7 @@ for i in range(len(InterPro)):
         fp.write('delete\t1\t10\t10\tPfam\n')
         fp.close()  
 
+
 # Merge blast and interproscan results into a table and retrieve the fasta sequences
 for i in range(len(gene_families)):
     blast= gene_families_db[i].replace("_db.fasta","_parsed_blast.txt")
@@ -160,6 +220,8 @@ for i in range(len(gene_families)):
     # Encode proteins and CDS from the generated GFFs
     os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes.gff3', output+'_gff'))
     os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes_trimmed.gff3', output+'_gfftrimmed'))
+    os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes.gff3', output+'_gff'))
+    os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes_trimmed.gff3', output+'_gfftrimmed'))
 
 # Produce HMM profile of the gene family db (good) + the parsed sequences
 for i in range(len(gene_families)):
@@ -169,8 +231,10 @@ for i in range(len(gene_families)):
     os.system("mafft --auto %s > %s" % (fasta, alignment))
     os.system("hmmbuild %s  %s" % (profile, alignment))
     os.system("rm %s" % (alignment))
+    if os.stat(fasta).st_size == 0:
+        Bitacora[i]="No"
 
-# Run bitacora if necessary
+# Run bitacora if necessary or not if the database is empty
 for i in range(len(gene_families)):
     if Bitacora[i]=="full":
         directory = gene_families_db[i].replace(gene_families[i]+"_db.fasta","Result")
@@ -209,7 +273,8 @@ for i in range(len(gene_families)):
             fp.close()
         
 os.chdir("%s" % (path))
-os.system("python3 %s %s %s %s" % (path+'/Scripts/table_results.py', genome_name, path+'/Data/gene_families.xlsx', genome_directory))
+
+os.system("python3 %s %s %s %s" % (path+'/Scripts/table_results.py', genome_name, excel_table, genome_directory))
 
 # Reorganize output files
 for i in range(len(gene_families)):
@@ -223,7 +288,7 @@ for i in range(len(gene_families)):
     pdomain = gene_families_db[i].replace("db.fasta", "parsed_domain.txt")
     oblast = gene_families_db[i].replace("db.fasta", "blast_output.txt")
     os.system("mv %s %s" % (pblast, step1+'/temporary_files'))
-    os.system("mv %s %s" % (oblast, step1+'/temporary_files'))
     os.system("mv %s %s" % (pdomain, step1+'/temporary_files'))
+    if str(os.path.isfile(oblast))=='True':
+        os.system("mv %s %s" % (oblast, step1+'/temporary_files'))
     os.system("mv %s %s" % (gene_families_db[i].replace("db.fasta", "*"), step1))
-
