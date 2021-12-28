@@ -125,19 +125,47 @@ Once edited the scripts as indicated in the **Installation** step and prepared t
 ```
 bash run_pipeline.sh
 ``` 
+or in the case of running in the computerome:
+```
+bash run_pipeline_computerome.sh
+``` 
 #### 4.3. Output
 
 The pipeline generates for each GENOME AND GENE FAMILY, two outputs of interest:
 
-1. The files called **GENE-FAMILY-NAME_parsed_sequences.fasta** and **GENE-FAMILY-NAME_merged.txt**. 
+1. Step 1 outputs: 
 
-This output files are generated in the first step before running bitacora and are located in the directory _"Gene-annotation-pipeline/Data/Genomes/GENOME-NAME/gene\_families\_pipeline/GENE-FAMILY-NAME"_. The fasta file contains identified and curated sequences to be annotated and the txt file is a summary table of the sequences.
+This output files are generated in the first step before running bitacora and are located in the directory _"OUTPUT_DIR/gene\_families\_pipeline/GENE-FAMILY-NAME/Step1"_. In this directory the GFF, CDS and PEP fasta files can be found as well as some Intermediate files.
 
-2. The output folder created by _BITACORA_.
+2. Step 2 outputs_:
 
-It is located in the directory _"Gene-annotation-pipeline/Data/Genomes/GENOME-NAME/gene\_families\_pipeline/GENE-FAMILY-NAME/Result"_. The description of this output can be found in the Documentation of _BITACORA_ https://github.com/molevol-ub/bitacora.git
+It is located in the directory _"OUTPUT_DIR/gene\_families\_pipeline/GENE-FAMILY-NAME/Step2_bitacora"_. The description of this output can be found in the Documentation of _BITACORA_ https://github.com/molevol-ub/bitacora.git
 
-For a general overview of the results, a file called **table_results.txt** in the main directory is produced and contains the number of genes identified in the first step, after _BITACORA_, and the expected, per family and genome.
+For a general overview of the results, a file called **table_results.txt** in the output directory is produced and contains the number of genes identified in the first step, after _BITACORA_, and the expected, per family and genome.
+
+#### 4.4. Output selection
+
+After running the pipeline, it's time to check the table_results for each genome and correct the gene families that have a label "Review". For more information about this step contact ignasi.andreu.godall@gmail.com.
+
+The last step is to generate the final output that consists of selecting the desired output files for each gene family that is indicated in the last column of the table_results.txt. To do so, run the script generate_final_oputputs.sh after filling the following arguments:
+
+usage: gen_final_output.py [-h]
+                           pipeline_dir genome gene_families_info
+                           pipeline_output out_dir
+
+Script to generate the final outputs after running the re-annotation pipeline.
+
+positional arguments:
+  pipeline_dir        Main directory of the pipeline that contains the
+                      README.md.
+  genome              File with genomic sequences in FASTA format.
+  gene_families_info  Excel file containing all the gene families information.
+  pipeline_output     Directory with the output of the pipeline. ej:
+                      PATH/TO/GAGA-0001
+  out_dir             Output directory.
+
+optional arguments:
+  -h, --help          show this help message and exit
 
 #### 5. Example
 An example to run the pipeline can be found in Example folder. It consists of two chemosensory-related gene families in insects: Odorant receptors (ORs), and the CD36-SNMP gene family; will be searched in the chromosome 2R of Drosophila melanogaster. The GFF3 and protein files are modified from original annotations, deleting some gene models, to allow that BITACORA can identify novel not-annotated genes.
