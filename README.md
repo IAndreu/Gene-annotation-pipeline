@@ -107,14 +107,15 @@ Example of the format of this file:
  **NOTE:** Not all the fields from the table have to be filled for a gene family to be annotated. "Function/Classification", "InterPro Domain" and "Pfam domain" can be blank cells (specially if there is no domain information about the gene family). "Blast" cell can also be blank if there is no input fasta database of the gene family to run a *blastp*.
 
 - **gene_families_db: directory containing the query protein databases (GENEFAMILY-NAME\_db.fasta) in FASTA format, where the “GENEFAMILY-NAME” label is a gene family name from the Excel file. The addition of ”_db” to the database name with its proper extension is mandatory.**
+
 - **out_dir: output directory containing all gene families annotation.**
-- 
+
 - **File with genomic sequences in FASTA format**
-- 
+
 - **File with structural annotations in GFF3 format**
-- 
+
 - **File with predicted proteins in FASTA format.**
-- 
+
 - **File with predicted domains from InterPro in TSV format**
 
 Those files are some of the variables that must be specified in the main script "run_pipeline.sh".
