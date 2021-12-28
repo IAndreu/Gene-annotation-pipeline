@@ -79,6 +79,8 @@ for i in merged:
     # if the start position is lower than the average peptide length then start position is 1
     if int(merged[i]["start"])<pept_avg:
         merged[i]["start"]='1'
+    if abs(int(merged[i]["lenght"])-int(merged[i]["stop"]))<pept_avg:
+        merged[i]["stop"]=merged[i]["lenght"]
     # If two times the alignment length is lower than the subject length then it is a possible chimera
     if (int(merged[i]["stop"])-int(merged[i]["start"])+2)*2 < int(merged[i]["lenght"]):
         merged[i]['label']="chimera"
@@ -106,13 +108,14 @@ for j in merged:
                     for k in range(pept_avg):
                         if records[i].seq[int(merged[j]["start"])-pept_avg+k]=="M":
                             merged[j]["start"]=str(int(merged[j]["start"])-pept_avg+k+1)
+                            break
         else:
             for i in range(len(records)):
                 if records[i].id == j:
                     for k in range(pept_avg):
                         if records[i].seq[int(merged[j]["start"])-pept_avg+k]=="M":
                             merged[j]["start"]=str(int(merged[j]["start"])-pept_avg+k+1)
-
+                            break
         
 # Generate table with relevant proteins and their information
 f = open(gene_family+"_merged.txt", "w")
@@ -142,7 +145,7 @@ for j in merged:
                 f.write(">")
                 f.write(j)
                 f.write("\n")
-                f.write(str(records[i].seq[int(merged[j]["start"])-1:int(merged[j]["stop"])-1]))
+                f.write(str(records[i].seq[int(merged[j]["start"])-1:int(merged[j]["stop"])]))
                 f.write("\n")
     else:
         for i in range(len(records)):
@@ -150,7 +153,7 @@ for j in merged:
                 f.write(">")
                 f.write(j)
                 f.write("\n")
-                f.write(str(records[i].seq[int(merged[j]["start"])-1:int(merged[j]["stop"])-1]))
+                f.write(str(records[i].seq[int(merged[j]["start"])-1:int(merged[j]["stop"])]))
                 f.write("\n")
 f.close()
 
