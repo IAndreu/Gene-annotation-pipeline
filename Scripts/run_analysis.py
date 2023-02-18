@@ -218,10 +218,10 @@ for i in range(len(gene_families)):
     output = gene_families_db[i].replace("_db.fasta","")
     os.system("perl %s %s %s %s" % (path+'/Scripts/get_annot_genes_gff_v2.pl', gff, merged, output))
     # Encode proteins and CDS from the generated GFFs
-    os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes.gff3', output+'_gff'))
-    os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes_trimmed.gff3', output+'_gfftrimmed'))
-    os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes.gff3', output+'_gff'))
-    os.system("perl %s %s %s %s" % (path+'/bitacora-master/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes_trimmed.gff3', output+'_gfftrimmed'))
+    os.system("perl %s %s %s %s" % (path+'/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes.gff3', output+'_gff'))
+    os.system("perl %s %s %s %s" % (path+'/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes_trimmed.gff3', output+'_gfftrimmed'))
+    os.system("perl %s %s %s %s" % (path+'/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes.gff3', output+'_gff'))
+    os.system("perl %s %s %s %s" % (path+'/Scripts/gff2fasta_v3.pl', genome, output+'_annot_genes_trimmed.gff3', output+'_gfftrimmed'))
 
 # Produce HMM profile of the gene family db (good) + the parsed sequences
 for i in range(len(gene_families)):

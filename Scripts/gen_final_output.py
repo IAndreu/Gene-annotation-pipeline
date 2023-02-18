@@ -37,7 +37,7 @@ for i in range(len(df)):
     if '-' in str(df['Average number of genes'][i]):
         average_genes[gene_families[i]]=int(df['Average number of genes'][i].split('-')[0])+int(df['Average number of genes'][i].split('-')[1])/2
     else:
-        average_genes[gene_families[i]]= df['Average number of genes'][i]
+        average_genes[gene_families[i]]= int(df['Average number of genes'][i])
 blast = {}
 for i in range(len(df)):
     blast[gene_families[i]]=str(df['Blast'][i])
@@ -151,6 +151,6 @@ for gene in genes_gf:
 # Produce fasta files
 for i in range(len(gene_families)):
     if str(os.path.isfile(genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))=='True':
-        os.system("perl main_directory/bitacora-master/Scripts/gff2fasta_v3.pl %s %s %s" % (Genome, genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline"))
+        os.system("perl "+main_directory+"/Scripts/gff2fasta_v3.pl %s %s %s" % (Genome, genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline"))
         os.system("sed -i 's/X$//g' %s" % (genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.pep.fasta"))
 

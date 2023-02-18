@@ -40,8 +40,8 @@ module load perl
 ###### EDIT VARIABLES ######
 path="/path/to/Gene-annotation-pipeline"
 table="/path/to/gene_families.xlsx"
-pipeline_output_directory="${path}/Data/Genomes/Genome-name"
-genome="${genome_directory}/Genome-in-fasta-file"
-output_directory="/path/to/output_directory"
+pipeline_output_directory="/path/to/prev_output_directory" # Folder in the pipeline output containing Genome-name/table_results.txt
+genome="/path/to/Genome-in-fasta-file"
+output_directory="/path/to/output_directory" # Output folder generated in this step
 ############################
-python3 Scripts/gen_final_output.py $path $genome $table $pipeline_output_directory $output_directory
+python3 "$path"/Scripts/gen_final_output.py $path $genome $table $pipeline_output_directory $output_directory
