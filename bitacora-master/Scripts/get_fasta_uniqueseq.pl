@@ -106,12 +106,13 @@ close Fasta;
 
 foreach my $key (sort keys %nrfa){
 	my $nkey = $key;
-	#$nkey =~ s/\_//g;
-	#$nkey =~ s/\.//g;
-	#$nkey =~ s/\-//g;
-	#$nkey =~ s/\,//g;
-	#$nkey =~ s/\;//g;
-	#$nkey =~ s/\://g;
+	# Sanitize IDs so they conform to GeMoMa's sequence ID regex, which only
+	# allows an underscore when followed exclusively by digits until the end
+	# of the ID (e.g. GENE_1). Internally generated suffixes such as _split1
+	# do not match that pattern and make GeMoMa die with an
+	# IllegalArgumentException, so replace underscores that are not part of
+	# a trailing _<digits> suffix with a hyphen instead.
+	$nkey =~ s/_(?!\d+$)/-/g;
 	print Results ">$nkey\n$fasta{$key}\n";
 }
 
