@@ -149,7 +149,7 @@ For a general overview of the results, a file called **table_results.txt** in th
 
 #### 4.4. Output selection
 
-After running the pipeline, it's time to check the table_results.txt file for each genome and correct the gene families that have a label "Review".
+After running the pipeline, it's time to check the table_results.txt file for each genome and correct the gene families that have a label "Review" by following https://github.com/IAndreu/Gene-annotation-pipeline/tree/main#:~:text=3%20years%20ago-,MANUAL_CURATION.md,-Add%20MANUAL_CURATION.md.
 The steps we followed in the GAGA project are described here: [https://github.com/schraderL/GAGA/tree/main/Scripts/04_Gene_re-annotation](https://github.com/schraderL/GAGA/tree/main/04_Gene_re-annotation).
 For more information about this step contact ignasi.andreu.godall@gmail.com.
 
