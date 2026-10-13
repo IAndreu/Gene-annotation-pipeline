@@ -2,7 +2,9 @@
 
 This pipeline automates and standardizes gene and gene family member annotations for a number of gene/gene families in genome assemblies. It allows to obtain the most accurate number of gene copies and minimizes methodological biases that would otherwise perturb downstream comparative analyses. _BITACORA_ and _GeMoMa_ are the main tools used for the identification and annotation of gene families in genome assemblies, together with a first step that identifies and curate gene models using _Blastp_ and _InterProScan_ based on an input file with information of the gene families to annotate. This pipeline was optimized to re-annotate more than 400 gene and gene families across the 163 ant genomes generated in the [Global Ant Genomics Alliance (GAGA) project]([https://db.cngb.org/antbase/project](https://wurmlab.com/publications/global-ant-genomics-alliance/)). Briefly, the pipeline evaluates the initial generated general annotations, annotate previously missed genes, and label putative erroneus annotations to be manually reviewed and fixed if necessary using an Apollo or other similar tools. 
 
-Find here the specific datasets and steps used in the GAGA project: [[https://github.com/schraderL/GAGA/tree/main/Scripts/04_Gene_re-annotation](https://github.com/schraderL/GAGA/tree/main/Scripts/04_Gene_re-annotation)](https://github.com/schraderL/GAGA/tree/main)
+Find here the specific datasets and steps used in the GAGA project: [GAGA/04_Gene_re-annotation](https://github.com/schraderL/GAGA/tree/main/04_Gene_re-annotation)
+
+**Curating the output:** see [MANUAL_CURATION.md](MANUAL_CURATION.md) for what the `Review` label in `table_results.txt` means and how to resolve it.
 
 ### Contents
 1. Prerequisites
@@ -149,8 +151,13 @@ For a general overview of the results, a file called **table_results.txt** in th
 
 #### 4.4. Output selection
 
-After running the pipeline, it's time to check the table_results.txt file for each genome and correct the gene families that have a label "Review" by following https://github.com/IAndreu/Gene-annotation-pipeline/tree/main#:~:text=3%20years%20ago-,MANUAL_CURATION.md,-Add%20MANUAL_CURATION.md.
-The steps we followed in the GAGA project are described here: [https://github.com/schraderL/GAGA/tree/main/Scripts/04_Gene_re-annotation](https://github.com/schraderL/GAGA/tree/main/04_Gene_re-annotation).
+After running the pipeline, it's time to check the table_results.txt file for each genome and correct the gene families that have a label "Review".
+
+**See [MANUAL_CURATION.md](MANUAL_CURATION.md) for a full guide to this step**: what triggers the `Review` label, which output files to inspect, how to distinguish false positives from false negatives, and how to feed curated models back in.
+
+Note that `Review` does not mean the annotation failed — it means the expected gene count was not matched, so the pipeline could not choose automatically between the Step 1 and Step 2 output. Most flagged families only require selecting which output to keep; only a minority need manual annotation.
+
+The steps we followed in the GAGA project are described here: [GAGA/04_Gene_re-annotation](https://github.com/schraderL/GAGA/tree/main/04_Gene_re-annotation).
 For more information about this step contact ignasi.andreu.godall@gmail.com.
 
 The last step is to generate the final output that consists of selecting the desired output files for each gene family that is indicated in the last column of the table_results.txt. To do so, run the script generate_final_oputputs.sh after filling the following arguments:
