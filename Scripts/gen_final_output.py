@@ -30,7 +30,38 @@ df = pd.read_excel(xlsx)
 gene_families= [df['Gene family'][i].replace(" ", "") for i in range(len(df))]
 classification= [df['Function/Classification'][i].replace(" ", "") for i in range(len(df))]
 trimmed= [str(df['Trimmed output'][i]) for i in range(len(df))]
-get_from=[x.split('\t')[11] for x in open(genome_dir+"/table_results.txt").readlines()][1:]
+# Read the decision column (12th column, index 11) of table_results.txt, keyed by the
+# gene family name in the first column.
+#
+# This used to be read positionally and zipped against the rows of the Excel sheet.
+# table_results.py only writes a row for a gene family when its genecounts_summary.txt
+# exists, so a single family that failed (e.g. a BITACORA crash) shifted every
+# subsequent family onto the wrong GFF3, silently. Matching on the name instead makes
+# a missing family a reported skip rather than a corrupted output.
+get_from = {}
+with open(genome_dir+"/table_results.txt") as fh:
+    for line in fh.readlines()[1:]:
+        fields = line.rstrip('\n').split('\t')
+        if len(fields) < 12:
+            continue
+        get_from[fields[0].strip()] = fields[11].strip()
+
+missing = [gf for gf in gene_families if gf not in get_from]
+if missing:
+    sys.stderr.write(
+        "WARNING: no row in table_results.txt for: %s\n"
+        "These gene families will be skipped. This usually means the family failed\n"
+        "during the pipeline run and produced no genecounts_summary.txt.\n"
+        % (", ".join(missing)))
+
+unresolved = [gf for gf in gene_families
+              if get_from.get(gf) not in ("Step 1", "Step 2", "Manual", None)]
+if unresolved:
+    sys.stderr.write(
+        "WARNING: still marked '%s' in table_results.txt: %s\n"
+        "These gene families will produce no output. Set column 12 to 'Step 1',\n"
+        "'Step 2' or 'Manual' before running this script. See MANUAL_CURATION.md.\n"
+        % ("Review", ", ".join(unresolved)))
 os.system("mkdir -p %s" % (genome_output))
 average_genes= {}
 for i in range(len(df)):
@@ -45,19 +76,22 @@ for i in range(len(df)):
         
 # Pick and copy the appropiate gff3 for each gene family to the output directory
 for i in range(len(gene_families)):
+    selected = get_from.get(gene_families[i])
+    if selected is None:
+        continue
     os.system("mkdir -p %s" % (genome_output+"/"+gene_families[i])) # folder with desired gff3 for each gene family
-    if get_from[i] == "Step 1" and trimmed[i] == "Yes":
+    if selected == "Step 1" and trimmed[i] == "Yes":
         os.system("cp %s %s" % (genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step1/"+gene_families[i]+"_annot_genes_trimmed.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))
-    if get_from[i] == "Step 1" and trimmed[i] == "No":
+    if selected == "Step 1" and trimmed[i] == "No":
         os.system("cp %s %s" % (genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step1/"+gene_families[i]+"_annot_genes.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))
-    if get_from[i] == "Step 2" and trimmed[i] == "Yes":
+    if selected == "Step 2" and trimmed[i] == "Yes":
         os.system("cp %s %s" % (genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step2_bitacora/"+gene_families[i]+"/"+gene_families[i]+"_genomic_and_annotated_proteins_trimmed_idseqsclustered.gff3",genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))
-    if get_from[i] == "Step 2" and trimmed[i] == "No":
+    if selected == "Step 2" and trimmed[i] == "No":
         if str(os.path.isfile(genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step2_bitacora/"+gene_families[i]+"/Intermediate_files/"+gene_families[i]+"_genomic_genes.gff3"))=='True':
             os.system("cat %s %s > %s" % (genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step2_bitacora/"+gene_families[i]+"/Intermediate_files/"+gene_families[i]+"_annot_genes.gff3",genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step2_bitacora/"+gene_families[i]+"/Intermediate_files/"+gene_families[i]+"_genomic_genes.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))
         else:
             os.system("cat %s > %s" % (genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Step2_bitacora/"+gene_families[i]+"/Intermediate_files/"+gene_families[i]+"_annot_genes.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))
-    if get_from[i] == "Manual":
+    if selected == "Manual":
         os.system("cp %s %s" % (genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/Manual/"+gene_families[i]+"_manualmodels.gff3", genome_output+"/"+gene_families[i]+"/"+gene_families[i]+"_annotpipeline.gff3"))
 
     # Rename the genes ID and mRNA parent names

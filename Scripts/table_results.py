@@ -15,7 +15,7 @@ average= [str(df['Average number of genes'][i]) for i in range(len(df))]
 trimmed= [str(df['Trimmed output'][i]) for i in range(len(df))]
 Bitacora= [df['Bitacora'][i] for i in range(len(df))]
 with open(genome_dir+"/table_results.txt", "w") as fp:
-    fp.write("Gene/Gene family\tStep_1_complete\tStep_1_partial\tStep_1_chimera\tStep_1_total\tNumber of annotated genes identified\tNumber of putative not annotated genes\tTotal number of identified genes (Annotated + Genomic)\tTotal number of identified genes clustering identical sequences\tTotal number of identified genes clustering highly identical sequences and proteins shorter than 30 aa\tAverage number in ant genomes\tTRIMMED\n")
+    fp.write("Gene/Gene family\tStep_1_complete\tStep_1_partial\tStep_1_chimera\tStep_1_total\tNumber of annotated genes identified\tNumber of putative not annotated genes\tTotal number of identified genes (Annotated + Genomic)\tTotal number of identified genes clustering identical sequences\tTotal number of identified genes clustering highly identical sequences and proteins shorter than 30 aa\tAverage number in ant genomes\tFINAL RESULTS\tTRIMMED\n")
     fp.close()
 for i in range(len(gene_families)):
     merged = genome_dir+"/gene_families_pipeline/"+gene_families[i]+"/"+gene_families[i]+"_merged.txt"
