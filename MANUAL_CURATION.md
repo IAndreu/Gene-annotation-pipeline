@@ -103,7 +103,87 @@ These three counts are columns 2–4 of `table_results.txt`, so a `Review` row w
 
 ---
 
-## 4. Deciding false positive vs. false negative
+## 4. Reading the count columns
+
+The most common mistake when triaging `Review` rows is comparing `Step_1_total`
+directly with the last Step 2 count. **These two columns do not measure the same
+thing**, and comparing them produces discrepancies that look alarming but are
+artefacts.
+
+| Col | Name | What it actually counts |
+|---|---|---|
+| 5 | `Step_1_total` | **Rows in `GENEFAMILY_merged.txt`** — protein entries, not genes. Chimeric proteins split into `_split1`, `_split2`… contribute one row *each* |
+| 6 | Number of annotated genes identified | Step 2 count derived from the annotated proteome |
+| 7 | Number of putative not annotated genes | Genes BITACORA found in the genome that were absent from the input GFF |
+| 8 | Total (Annotated + Genomic) | Step 2 raw total, before any clustering |
+| 9 | …clustering identical sequences | After collapsing identical sequences |
+| 10 | …clustering highly identical + <30 aa removed | **The gene-level figure. This is the number the `Review` logic uses** |
+
+Two consequences:
+
+- `Step_1_total` is **inflated**: it counts split fragments separately, and when
+  `TRIMMED=No` the final GFF3 keeps only `_split1` and discards the rest, so the
+  column overstates what Step 1 would actually deliver.
+- Column 10 is **deflated** relative to the raw search, because clustering and the
+  30 aa filter have been applied.
+
+So the honest comparison is **column 5 against column 10 only after you understand
+the collapse in between**. The drop from column 8 to column 10 measures how much
+redundancy was in the input. A large drop is normal for proteomes carrying many
+isoforms or fragmentary models; a small drop means the input was already clean.
+
+This matters most when the same family is compared across genomes whose annotations
+differ in maturity or redundancy. Two genomes can differ severalfold on `Step_1_total`
+and agree closely on column 10, because the difference was redundancy in the input
+rather than biology. A Step 2 count that looks lower than Step 1 usually means the
+input was more redundant to begin with, not that BITACORA missed genes — check the
+column 8 → column 10 drop before concluding anything.
+
+**For comparing gene counts across species, use column 10 consistently for every
+genome.** It is the only figure that is comparable across assemblies with annotations
+of differing maturity. Use `Step_1_total` to understand a single genome's Step 1
+output, never to compare genomes.
+
+### Quick checks
+
+Collapse split fragments, to see Step 1's effective gene count:
+
+```
+awk '{sub(/_split[0-9]+$/,"",$1); print $1}' GENEFAMILY_merged.txt | sort -u | wc -l
+```
+
+Tabulate the evidence source and the per-protein labels (columns 5 and 6 of
+`merged.txt`):
+
+```
+cut -f5 GENEFAMILY_merged.txt | sort | uniq -c    # evidence source
+cut -f6 GENEFAMILY_merged.txt | sort | uniq -c    # complete / parcial / chimera
+```
+
+Entries supported only by a domain match, with no blastp support against the query
+database, are the usual false positives — especially for families defined by a shared
+domain rather than by orthology.
+
+### Caveat: the headers are wrong in `genome` and `protein` mode
+
+When the `Bitacora` column of your spreadsheet is set to `genome` or `protein`,
+`run_analysis.py` writes `GENOME_genecounts_summary.txt` itself rather than taking it
+from BITACORA, and it fills some fields with constants. The signature to look for,
+across the rows of one family:
+
+- **column 7 is exactly `0`** in every genome, and
+- **column 8 is identical to column 6** in every genome.
+
+If you see that, those two columns are not measurements. In `genome` mode the figure
+under *"Number of annotated genes identified"* is really the count from the genome
+search, and the `0` under *"Number of putative not annotated genes"* is a literal
+constant. Step 1 and Step 2 are then two **independent** estimates — annotation-based
+and genome-based — rather than Step 2 being Step 1 plus newly found genes. Check the
+`Bitacora` column before interpreting these two fields.
+
+---
+
+## 5. Deciding false positive vs. false negative
 
 ### Fewer genes than expected (possible false negatives)
 
@@ -141,7 +221,7 @@ Delete incorrect models from the GFF3 and keep the rest.
 
 ---
 
-## 5. Feeding curated models back in
+## 6. Feeding curated models back in
 
 For each family you curated:
 
@@ -172,13 +252,13 @@ python3 Scripts/gen_final_output.py <pipeline_dir> <genome.fasta> <gene_families
 
 ---
 
-## 6. Chemosensory receptors
+## 7. Chemosensory receptors
 
 ORs and GRs were handled with a separate, dedicated pipeline in GAGA because of their
 tandem arrangement and fast evolution. If you are annotating these, see
 [GAGA/04_Gene_re-annotation/Chemosensory_gene_families](https://github.com/schraderL/GAGA/tree/main/04_Gene_re-annotation/Chemosensory_gene_families).
 
-## 7. Reference
+## 8. Reference
 
 The GAGA re-annotation protocol this pipeline was built for:
 <https://github.com/schraderL/GAGA/tree/main/04_Gene_re-annotation>
