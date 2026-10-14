@@ -164,22 +164,42 @@ Entries supported only by a domain match, with no blastp support against the que
 database, are the usual false positives — especially for families defined by a shared
 domain rather than by orthology.
 
-### Caveat: the headers are wrong in `genome` and `protein` mode
+### If column 7 is always 0, check the `Bitacora` mode first
 
-When the `Bitacora` column of your spreadsheet is set to `genome` or `protein`,
-`run_analysis.py` writes `GENOME_genecounts_summary.txt` itself rather than taking it
-from BITACORA, and it fills some fields with constants. The signature to look for,
-across the rows of one family:
+A distinctive pattern worth recognising: across every genome for one family,
 
-- **column 7 is exactly `0`** in every genome, and
-- **column 8 is identical to column 6** in every genome.
+- **column 7 is exactly `0`**, and
+- **column 8 is identical to column 6**.
 
-If you see that, those two columns are not measurements. In `genome` mode the figure
-under *"Number of annotated genes identified"* is really the count from the genome
-search, and the `0` under *"Number of putative not annotated genes"* is a literal
-constant. Step 1 and Step 2 are then two **independent** estimates — annotation-based
-and genome-based — rather than Step 2 being Step 1 plus newly found genes. Check the
-`Bitacora` column before interpreting these two fields.
+What this means depends entirely on the `Bitacora` setting for that family, so check
+it before drawing any conclusion.
+
+**`genome` or `protein` mode** — `run_analysis.py` writes
+`GENOME_genecounts_summary.txt` itself instead of taking it from BITACORA, filling
+some fields with constants. The pattern is then an artefact and those two columns are
+not measurements: in `genome` mode the figure under *"Number of annotated genes
+identified"* is really the count from the genome search, and the `0` under *"Number of
+putative not annotated genes"* is a literal constant. Step 1 and Step 2 are two
+**independent** estimates — annotation-based and genome-based — rather than Step 2
+being Step 1 plus newly found genes.
+
+**`full` mode** — the summary comes from BITACORA itself (written by
+`runanalysis_2ndround_*.pl` and completed by `runfiltering.pl`, which appends the
+final column). The labels are then accurate, and the pattern is a real result:
+BITACORA found **no** genes beyond those already in your GFF. Across a handful of
+genomes that may be genuine; across many genomes, and especially where the annotation
+is still provisional, treat it as a red flag rather than a finding.
+
+The usual cause is a search so permissive that the annotated set already absorbs
+everything the genome search would otherwise call novel. Check the `E-value` column
+for that family against your other families — a threshold near or above `1` is
+effectively no filter and will inflate the Step 1 and annotated-gene counts while
+driving the novel-gene count toward zero. Check too whether multiple domains in the
+`Pfam domain` or `InterPro Domain` cell should be required together: entries separated
+by whitespace are treated as **OR** (any one domain qualifies a protein), while
+inserting `&&` between them requires **all** of them. For a family whose members
+reliably carry two domains, `&&` is far more specific and excludes proteins sharing
+only the more widespread one.
 
 ---
 
